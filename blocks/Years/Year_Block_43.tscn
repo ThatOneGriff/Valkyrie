@@ -1,0 +1,492 @@
+[gd_scene load_steps=13 format=3 uid="uid://csejo6m01imvs"]
+
+[ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_2x2s2"]
+[ext_resource type="Texture2D" uid="uid://drrcqn6jfehxf" path="res://images/1943/Spark.jpg" id="3_oqnt8"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="3_scjkn"]
+[ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="4_eww8d"]
+[ext_resource type="Texture2D" uid="uid://difougol8mhws" path="res://images/1943/von_Manstein.jpg" id="5_am62x"]
+[ext_resource type="Texture2D" uid="uid://cm23brdoiv465" path="res://images/1943/von_Rundstedt.jpg" id="6_2ta3w"]
+[ext_resource type="Texture2D" uid="uid://bh3vyogvuu33v" path="res://images/1943/von_Kluge.webp" id="6_5yb10"]
+[ext_resource type="Texture2D" uid="uid://clnc0gef310lf" path="res://images/1943/Tunisia.png" id="8_0ibxh"]
+[ext_resource type="Texture2D" uid="uid://df1pmmr0hxwk4" path="res://images/1943/Valkyrie.jpg" id="9_48qnp"]
+[ext_resource type="Texture2D" uid="uid://dpphtoiv6lstc" path="res://images/1943/Fromm.jpg" id="10_y4os3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exolb"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Year_Block" type="CanvasLayer"]
+
+[node name="Shape" type="Panel" parent="."]
+custom_minimum_size = Vector2(1600, 1280)
+offset_right = 1600.0
+offset_bottom = 1280.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+
+[node name="Layout" type="Control" parent="Shape"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Year" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.014
+anchor_right = 0.139
+anchor_bottom = 0.137
+offset_left = 0.799999
+offset_top = 0.0799999
+offset_right = -0.400024
+offset_bottom = -0.360016
+theme = ExtResource("1_2x2s2")
+text = "'43"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.139
+anchor_top = 0.032
+anchor_right = 0.406
+anchor_bottom = 0.13
+offset_left = -0.400024
+offset_top = 0.0399971
+offset_right = 0.399963
+offset_bottom = 0.599991
+theme = ExtResource("3_scjkn")
+text = ": the preparations"
+metadata/_edit_use_anchors_ = true
+
+[node name="Q1" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028875
+anchor_top = 0.350719
+anchor_right = 0.1365
+anchor_bottom = 0.473719
+offset_left = 0.799999
+offset_top = 0.0799866
+offset_right = -0.400024
+offset_bottom = -0.359985
+theme = ExtResource("1_2x2s2")
+text = "Q1"
+metadata/_edit_lock_ = true
+
+[node name="Q2" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521375
+anchor_top = 0.349937
+anchor_right = 0.629
+anchor_bottom = 0.472937
+offset_left = 0.799988
+offset_top = 0.0799866
+offset_right = -0.400024
+offset_bottom = -0.359985
+theme = ExtResource("1_2x2s2")
+text = "Q2"
+metadata/_edit_lock_ = true
+
+[node name="Q3" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0295
+anchor_top = 0.839781
+anchor_right = 0.137125
+anchor_bottom = 0.962781
+offset_left = 0.799999
+offset_top = 0.0799561
+offset_right = -0.400024
+offset_bottom = -0.359985
+theme = ExtResource("1_2x2s2")
+text = "Q3"
+metadata/_edit_lock_ = true
+
+[node name="Q4" type="Label" parent="Shape/Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521375
+anchor_top = 0.839781
+anchor_right = 0.629
+anchor_bottom = 0.962781
+offset_left = 0.799988
+offset_top = 0.0799561
+offset_right = -0.400024
+offset_bottom = -0.359985
+theme = ExtResource("1_2x2s2")
+text = "Q4"
+metadata/_edit_lock_ = true
+
+[node name="Border_V" type="Panel" parent="Shape/Layout"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491375
+anchor_top = 0.0168125
+anchor_right = 0.507
+anchor_bottom = 0.986313
+offset_left = 0.799988
+offset_top = 0.47998
+offset_right = 0.799988
+offset_bottom = -0.47998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_exolb")
+metadata/_edit_lock_ = true
+
+[node name="Border_H" type="Panel" parent="Shape/Layout"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_exolb")
+metadata/_edit_lock_ = true
+
+[node name="Spark" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.127906
+anchor_right = 0.284288
+anchor_bottom = 0.341375
+offset_top = 0.279999
+offset_right = 0.138977
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_oqnt8")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Operation_Spark" type="Label" parent="Shape/Spark"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.126
+anchor_top = 1.01
+anchor_right = 0.866
+anchor_bottom = 1.258
+offset_left = -0.000473022
+offset_top = 0.130035
+offset_right = -0.0350037
+offset_bottom = -0.04599
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "Operation \"Spark\""
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Spark_Result" type="Label" parent="Shape/Spark"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.358575
+anchor_top = 1.10306
+anchor_right = 0.878575
+anchor_bottom = 1.31806
+offset_left = 0.0599365
+offset_top = -0.134033
+offset_right = 3.41989
+offset_bottom = -14.829
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0698132
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- result: no sparks"
+metadata/_edit_use_anchors_ = true
+
+[node name="von_Manstein" type="TextureRect" parent="Shape/Spark"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.03685
+anchor_top = -0.151355
+anchor_right = 1.38133
+anchor_bottom = 0.539196
+offset_top = 0.319992
+offset_right = -0.199951
+offset_bottom = 0.197357
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_am62x")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Shape/Spark/von_Manstein"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 0.971
+anchor_right = 0.519
+anchor_bottom = 1.14
+offset_left = -71.2169
+offset_top = 5.46323
+offset_right = 71.1301
+offset_bottom = 0.0795898
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "von Manstein"
+metadata/_edit_use_anchors_ = true
+
+[node name="von_Kluge" type="TextureRect" parent="Shape/Spark"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0344
+anchor_top = 0.639854
+anchor_right = 1.37887
+anchor_bottom = 1.36558
+offset_top = 0.319992
+offset_right = -0.199951
+offset_bottom = 0.197357
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5yb10")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Shape/Spark/von_Kluge"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.999
+anchor_right = 0.5
+anchor_bottom = 1.155
+offset_left = -61.0
+offset_top = 0.0768738
+offset_right = 60.0
+offset_bottom = 0.0768738
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "von Kluge"
+
+[node name="von_Rundstedt" type="TextureRect" parent="Shape/Spark"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.43489
+anchor_top = 0.00249087
+anchor_right = 1.77936
+anchor_bottom = 0.754326
+offset_top = 0.319992
+offset_right = -0.199951
+offset_bottom = 0.197357
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_2ta3w")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Shape/Spark/von_Rundstedt"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361
+anchor_top = 0.999376
+anchor_right = 0.361
+anchor_bottom = 1.155
+offset_left = -89.54
+offset_top = -0.000305176
+offset_right = 89.46
+offset_bottom = 0.0768585
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "von Rundstedt"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hire_Result" type="Label" parent="Shape/Spark"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.28352
+anchor_top = 1.42376
+anchor_right = 1.77752
+anchor_bottom = 1.65176
+offset_left = -3.39111
+offset_top = 14.313
+offset_right = 0.550903
+offset_bottom = 0.0689392
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- result: nah man"
+metadata/_edit_use_anchors_ = true
+
+[node name="Tunisia" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.38061
+anchor_top = -0.0902344
+anchor_right = 1.54011
+anchor_bottom = 0.320799
+offset_left = -1188.97
+offset_top = 165.5
+offset_right = -1189.17
+offset_bottom = 165.378
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_0ibxh")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Description" type="Label" parent="Shape/Tunisia"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 1.009
+anchor_right = 0.502
+anchor_bottom = 1.07
+offset_left = -128.01
+offset_top = 0.22998
+offset_right = 127.99
+offset_bottom = -0.100037
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "Axis defeat in Tunisia"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Hire_Result" type="Label" parent="Shape/Tunisia"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.868
+anchor_top = 0.739
+anchor_right = 2.146
+anchor_bottom = 0.984
+offset_left = -7.3399
+offset_top = 23.2852
+offset_right = 0.770203
+offset_bottom = 0.0990601
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- Stauffenberg loses an eye,
+right hand and several
+fingers on the left hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Valkyrie" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026625
+anchor_top = 0.522969
+anchor_right = 0.48075
+anchor_bottom = 0.829845
+offset_left = 0.399998
+offset_top = 0.599976
+offset_right = -0.200073
+offset_bottom = 0.564941
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_48qnp")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="RichTextLabel" parent="Shape/Valkyrie"]
+custom_minimum_size = Vector2(389, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.501
+anchor_bottom = 1.242
+offset_left = -194.0
+offset_right = 194.488
+offset_bottom = -0.0340271
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "- Tresckow revises \"Valkyrie\"
+- Supplementary orders written"
+
+[node name="Fromm" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.645
+anchor_top = 0.526969
+anchor_right = 0.87025
+anchor_bottom = 0.919537
+offset_top = 0.47998
+offset_right = -0.400024
+offset_bottom = 0.230774
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_y4os3")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Shape/Fromm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.135
+offset_left = -44.0847
+offset_top = -0.0549927
+offset_right = 43.9153
+offset_bottom = -0.11969
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_eww8d")
+text = "Fromm"
+
+[node name="Fromm_Result" type="Label" parent="Shape/Fromm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330744
+anchor_top = 1.04854
+anchor_right = 1.07774
+anchor_bottom = 1.25854
+offset_left = -3.06791
+offset_top = 9.38312
+offset_right = 0.333466
+offset_bottom = 0.184692
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(1, 0.686275, 0.270588, 1)
+text = "- result: ???"
+metadata/_edit_use_anchors_ = true

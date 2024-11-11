@@ -1,0 +1,556 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2rt50yi4tl36"]
+
+[ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_0xijd"]
+[ext_resource type="Texture2D" uid="uid://bxptfp7rxkwuj" path="res://images/Assassination/Hitler.jpg" id="2_wp5nq"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="2_yb6v3"]
+[ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="3_snvit"]
+[ext_resource type="Texture2D" uid="uid://d0ia8u5fnfg1f" path="res://images/Assassination/Olbricht.jpg" id="4_0u670"]
+[ext_resource type="Texture2D" uid="uid://n4ndwmrqv2vt" path="res://images/Assassination/Wolfs_Lair.png" id="4_n0xmi"]
+[ext_resource type="Texture2D" uid="uid://bsbs1yoinfa0f" path="res://images/Assassination/Goebbels.jpg" id="5_lw6qh"]
+[ext_resource type="Texture2D" uid="uid://l2m0hiw7a7b3" path="res://images/Assassination/Himmler.jpg" id="6_dtaua"]
+[ext_resource type="Texture2D" uid="uid://bn7bpdeovi11u" path="res://images/Assassination/Lindermann.webp" id="7_tn3rh"]
+[ext_resource type="Texture2D" uid="uid://c2avi8pae5wd5" path="res://images/icons/arrow.png" id="8_4qk5y"]
+[ext_resource type="Texture2D" uid="uid://b0w772hm5lqig" path="res://images/Assassination/Stülpnagel.jpg" id="8_7van6"]
+[ext_resource type="Texture2D" uid="uid://d0yqpv28heoyr" path="res://images/Assassination/von_Hase.jpg" id="10_br4rx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Year_Block_Assassination" type="CanvasLayer"]
+
+[node name="Base" type="Control" parent="."]
+custom_minimum_size = Vector2(1600, 1280)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 1280.0
+metadata/_edit_lock_ = true
+
+[node name="Shape" type="Panel" parent="Base"]
+custom_minimum_size = Vector2(1600, 1280)
+layout_mode = 1
+offset_left = 10.0
+offset_right = 1610.0
+offset_bottom = 1280.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+
+[node name="Year" type="Label" parent="Base/Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.014
+anchor_right = 0.561
+anchor_bottom = 0.137
+offset_left = 0.799999
+offset_top = 0.0799999
+offset_right = -675.6
+offset_bottom = -0.360016
+theme = ExtResource("1_0xijd")
+text = "Assassination"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hire_Result" type="Label" parent="Base/Shape"]
+custom_minimum_size = Vector2(460, 440)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.697875
+anchor_top = 0.567594
+anchor_right = 0.984625
+anchor_bottom = 0.973094
+offset_left = -0.599976
+offset_top = 0.47998
+offset_right = 0.599976
+offset_bottom = 0.439941
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_yb6v3")
+text = "1. Arm the bombs
+2. Get a phone call
+3. RUN!
+4. Broadcast the
+message
+5. Disarm the SS
+6. Take power
+7. We did it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitler" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11825
+anchor_top = 0.268
+anchor_right = 0.11825
+anchor_bottom = 0.268
+offset_left = -127.2
+offset_top = -176.04
+offset_right = 127.8
+offset_bottom = 174.96
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wp5nq")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/Hitler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.135
+offset_left = -44.0847
+offset_top = -0.0549927
+offset_right = 43.9153
+offset_bottom = -0.11969
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Adolf Hitler
+"
+
+[node name="42_ass" type="Label" parent="Base/Hitler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114157
+anchor_top = 1.07364
+anchor_right = 0.888157
+anchor_bottom = 1.28464
+offset_left = -0.110003
+offset_top = 0.151978
+offset_right = 2.51999
+offset_bottom = -6.90903
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0349066
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "42 assassination
+attempts!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Goebbels" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.292
+anchor_top = 0.273
+anchor_right = 0.292
+anchor_bottom = 0.273
+offset_left = -127.2
+offset_top = -182.44
+offset_right = 127.8
+offset_bottom = 183.56
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_lw6qh")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/Goebbels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.094
+offset_left = -101.5
+offset_top = 0.0914001
+offset_right = 100.5
+offset_bottom = -0.0914612
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Joseph Goebbels"
+
+[node name="Arrest" type="Label" parent="Base/Goebbels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317922
+anchor_top = -0.0171117
+anchor_right = 0.696079
+anchor_bottom = 0.144219
+offset_left = -3.0701
+offset_top = 14.2629
+offset_right = 0.499878
+offset_bottom = 0.215965
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "ARREST"
+metadata/_edit_use_anchors_ = true
+
+[node name="Not_Arrested" type="Label" parent="Base/Goebbels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114
+anchor_top = -0.039
+anchor_right = 0.9
+anchor_bottom = 0.123
+offset_left = -3.07009
+offset_top = 14.2629
+offset_right = 0.499893
+offset_bottom = 0.215961
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "NOT ARRESTED"
+metadata/_edit_use_anchors_ = true
+
+[node name="Himmler" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46325
+anchor_top = 0.259
+anchor_right = 0.46325
+anchor_bottom = 0.259
+offset_left = -127.2
+offset_top = -164.52
+offset_right = 127.8
+offset_bottom = 165.48
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_dtaua")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/Himmler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.094
+offset_left = -101.5
+offset_top = 0.0914001
+offset_right = 100.5
+offset_bottom = -0.0914612
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Heinrich Himmler"
+
+[node name="Reverts_Mobilization" type="Label" parent="Base/Himmler"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.205
+anchor_top = 1.078
+anchor_right = 0.792
+anchor_bottom = 1.297
+offset_left = -2.275
+offset_top = 5.25998
+offset_right = 0.0399933
+offset_bottom = -0.0100098
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0349066
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- Reverts the
+mobilization"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Wolfs_Lair" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352
+anchor_top = 0.245
+anchor_right = 0.352
+anchor_bottom = 0.245
+offset_left = 325.8
+offset_top = -146.6
+offset_right = 668.8
+offset_bottom = 137.522
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_n0xmi")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Base/Wolfs_Lair"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.135
+offset_left = -44.0847
+offset_top = -0.0549927
+offset_right = 43.9153
+offset_bottom = -0.11969
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Wolf's Lair on modern map
+"
+
+[node name="Conference_Date" type="Label" parent="Base/Wolfs_Lair"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.403
+anchor_top = 1.082
+anchor_right = 1.004
+anchor_bottom = 1.246
+offset_left = -2.229
+offset_top = 14.5803
+offset_right = 0.627991
+offset_bottom = -0.0157166
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "20th of July, 1944"
+
+[node name="Olbricht" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0387501
+anchor_top = 0.645594
+anchor_right = 0.16675
+anchor_bottom = 0.874594
+offset_left = -0.00012207
+offset_top = 0.639954
+offset_right = -4.80017
+offset_bottom = 0.52002
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0u670")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/Olbricht"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.006
+anchor_right = 0.5
+anchor_bottom = 1.135
+offset_left = -44.0847
+offset_top = -0.0549927
+offset_right = 43.9153
+offset_bottom = -0.11969
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Friedrich Olbricht"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Base/Olbricht"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00639998
+anchor_top = 1.12831
+anchor_right = 0.987
+anchor_bottom = 1.40505
+offset_left = -4.72
+offset_top = 14.404
+offset_right = 0.599991
+offset_bottom = 0.321716
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- Put forward the
+\"Valkyrie\" idea"
+metadata/_edit_use_anchors_ = true
+
+[node name="Lindermann" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.59
+anchor_top = 0.614344
+anchor_right = 0.6805
+anchor_bottom = 0.751156
+offset_left = -0.00012207
+offset_top = 0.639954
+offset_right = -4.80017
+offset_bottom = 0.52002
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_tn3rh")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/Lindermann"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 1.0
+anchor_right = 0.525
+anchor_bottom = 1.383
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = -0.0250244
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "Fritz Lin-
+dermann"
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="TextureRect" parent="Base/Lindermann"]
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.00043
+anchor_top = 0.822571
+anchor_right = 1.34143
+anchor_bottom = 1.05257
+offset_left = -0.0599976
+offset_top = 0.0500488
+offset_right = 0.0480957
+offset_bottom = -0.0349579
+texture = ExtResource("8_4qk5y")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="von Stulpnagel" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.584375
+anchor_top = 0.808875
+anchor_right = 0.686125
+anchor_bottom = 0.951937
+offset_left = -0.00012207
+offset_top = 0.639954
+offset_right = -4.80017
+offset_bottom = 0.52002
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7van6")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/von Stulpnagel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 1.0
+anchor_right = 0.525
+anchor_bottom = 1.383
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = -0.0250244
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "von Stülpnagel"
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="TextureRect" parent="Base/von Stulpnagel"]
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.879747
+anchor_top = 0.153005
+anchor_right = 1.22152
+anchor_bottom = 0.382393
+offset_bottom = 0.0220184
+texture = ExtResource("8_4qk5y")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="von Hase" type="TextureRect" parent="Base"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.178125
+anchor_top = 0.645594
+anchor_right = 0.321125
+anchor_bottom = 0.87633
+offset_left = -0.00012207
+offset_top = 0.639954
+offset_right = -4.80017
+offset_bottom = 0.52002
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_br4rx")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Base/von Hase"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 1.0
+anchor_right = 0.525
+anchor_bottom = 1.17311
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = -0.0250244
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "von Hase"
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="Base/von Hase"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0293143
+anchor_top = 1.12831
+anchor_right = 0.976714
+anchor_bottom = 1.367
+offset_left = 1.4336
+offset_top = -1.10352
+offset_right = 1.21599
+offset_bottom = -3.569
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0174533
+theme = ExtResource("3_snvit")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "Secured Wilhelm-
+strasse"
+metadata/_edit_use_anchors_ = true
+
+[node name="Etc" type="Label" parent="Base"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.355
+anchor_top = 0.726906
+anchor_right = 0.556
+anchor_bottom = 0.833906
+offset_left = -6.10352e-05
+offset_top = 0.559937
+offset_right = -0.599976
+offset_bottom = 0.599976
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_snvit")
+text = "And a ton of other dudes I
+was too lazy to add here. 
+Trust me, it was a massive
+coup, not just these 4 guys."
+metadata/_edit_use_anchors_ = true

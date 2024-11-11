@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://drm56nw8s7ixe"]
+
+[ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_h5inq"]
+[ext_resource type="Texture2D" uid="uid://b05e6d13tklma" path="res://images/1941/Barbarossa.jpg" id="1_pqxqc"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="3_lflih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Year_Block_41" type="CanvasLayer"]
+
+[node name="Shape" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 640)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -320.0
+offset_right = 400.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+metadata/_edit_lock_ = true
+
+[node name="Year" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.0296875
+anchor_right = 0.315
+anchor_bottom = 0.275438
+offset_bottom = -0.279999
+theme = ExtResource("1_h5inq")
+text = "'41"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.452
+anchor_top = 0.069
+anchor_right = 0.452
+anchor_bottom = 0.168
+offset_left = -151.6
+offset_top = -0.160004
+offset_right = 151.4
+offset_bottom = -0.312012
+theme = ExtResource("3_lflih")
+text = ": Barbarossa"
+metadata/_edit_lock_ = true
+
+[node name="Barbarossa_Map" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.595
+anchor_right = 0.5
+anchor_bottom = 0.595
+offset_left = -276.0
+offset_top = -206.8
+offset_right = 274.0
+offset_bottom = 206.2
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pqxqc")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_lock_ = true

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5o5j8dpsimrm"]
+
+[ext_resource type="Texture2D" uid="uid://b21nw65dc2f55" path="res://images/Stauffenberg.jpg" id="1_gfgqx"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="2_m3imw"]
+
+[node name="von_Stauffenberg" type="CanvasLayer"]
+
+[node name="Photo" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(800, 0)
+offset_right = 400.0
+offset_bottom = 571.429
+texture = ExtResource("1_gfgqx")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Photo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.058
+offset_left = -213.0
+offset_top = 3.14282
+offset_right = 213.0
+offset_bottom = -0.142944
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_m3imw")
+text = "von Stauffenberg"

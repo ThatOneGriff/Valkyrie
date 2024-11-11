@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpqnkcrdibnjm"]
+
+[ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_q704y"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="3_3phpk"]
+[ext_resource type="Texture2D" uid="uid://cm3m4866jeonq" path="res://images/1942/von_Tresckow.jpg" id="3_msopt"]
+[ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="4_r43ae"]
+[ext_resource type="Texture2D" uid="uid://8vs75qae5aeg" path="res://images/1942/Tunisian_Campaign.jpg" id="5_xxr0v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Year_Block_42" type="CanvasLayer"]
+
+[node name="Shape" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 640)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -320.0
+offset_right = 400.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+metadata/_edit_lock_ = true
+
+[node name="Year" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.0296875
+anchor_right = 0.315
+anchor_bottom = 0.275438
+offset_bottom = -0.279999
+theme = ExtResource("1_q704y")
+text = "'42"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.523
+anchor_top = 0.074
+anchor_right = 0.523
+anchor_bottom = 0.168
+offset_left = -195.4
+offset_top = -3.36
+offset_right = 195.6
+offset_bottom = -0.312012
+theme = ExtResource("3_3phpk")
+text = ": new beginning"
+metadata/_edit_use_anchors_ = true
+
+[node name="von_Tresckow" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6725
+anchor_top = 0.26825
+anchor_right = 0.914
+anchor_bottom = 0.694
+offset_top = 0.319992
+offset_right = -0.199951
+offset_bottom = 0.197357
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_msopt")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="Shape/von_Tresckow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 1.0
+anchor_right = 0.519
+anchor_bottom = 1.14
+offset_left = -71.2169
+offset_top = -0.000305176
+offset_right = 71.1301
+offset_bottom = 0.0795898
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_r43ae")
+text = "von Tresckow"
+metadata/_edit_use_anchors_ = true
+
+[node name="New_Resistance_Leader" type="Label" parent="Shape/von_Tresckow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.269552
+anchor_top = 1.11139
+anchor_right = 1.11356
+anchor_bottom = 1.37139
+offset_left = -6.93989
+offset_top = -0.69635
+offset_right = 5.1201
+offset_bottom = -27.9764
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0698132
+theme = ExtResource("4_r43ae")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- new resistance leader"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hires_Oppositionists" type="Label" parent="Shape/von_Tresckow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.311002
+anchor_top = 1.23372
+anchor_right = 1.116
+anchor_bottom = 1.46472
+offset_left = 0.0599747
+offset_top = -0.0116882
+offset_right = 3.6489
+offset_bottom = -19.3934
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0698132
+theme = ExtResource("4_r43ae")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "- hires oppositionists"
+metadata/_edit_use_anchors_ = true
+
+[node name="Tunusia" type="TextureRect" parent="Shape"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0725
+anchor_top = 0.269875
+anchor_right = 0.538601
+anchor_bottom = 0.718688
+offset_top = 0.279999
+offset_right = 0.138977
+offset_bottom = 0.039978
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_xxr0v")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Nov_17th" type="Label" parent="Shape/Tunusia"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.126
+anchor_top = 1.01
+anchor_right = 0.866
+anchor_bottom = 1.258
+offset_left = -0.000473022
+offset_top = 0.130035
+offset_right = -0.0350037
+offset_bottom = -0.04599
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_r43ae")
+text = "Nov 17th - start of the
+Tunisian campaign"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

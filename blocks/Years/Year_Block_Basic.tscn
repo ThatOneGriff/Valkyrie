@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhfahsgd3ttd"]
+
+[ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_dn606"]
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="2_2n8j7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Year_Block" type="CanvasLayer"]
+
+[node name="Shape" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 640)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -320.0
+offset_right = 400.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+metadata/_edit_lock_ = true
+
+[node name="Year" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.0296875
+anchor_right = 0.315
+anchor_bottom = 0.275438
+offset_bottom = -0.279999
+theme = ExtResource("1_dn606")
+text = "'XX"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Shape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.282
+anchor_top = 0.055
+anchor_right = 0.726
+anchor_bottom = 0.153
+offset_left = 0.399994
+offset_top = -0.200001
+offset_right = 0.200012
+offset_bottom = 0.0799942
+theme = ExtResource("2_2n8j7")
+text = ": title"

@@ -1,0 +1,173 @@
+[gd_scene load_steps=20 format=3 uid="uid://brm8jqymwapwr"]
+
+[ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Year_Block_38-39.tscn" id="1_n02dw"]
+[ext_resource type="PackedScene" uid="uid://drm56nw8s7ixe" path="res://blocks/Years/Year_Block_41.tscn" id="2_g58ui"]
+[ext_resource type="PackedScene" uid="uid://bpqnkcrdibnjm" path="res://blocks/Years/Year_Block_42.tscn" id="3_fj117"]
+[ext_resource type="PackedScene" uid="uid://csejo6m01imvs" path="res://blocks/Years/Year_Block_43.tscn" id="4_gemi1"]
+[ext_resource type="PackedScene" uid="uid://b5o5j8dpsimrm" path="res://blocks/von_Stauffenberg.tscn" id="5_t47ny"]
+[ext_resource type="PackedScene" uid="uid://c2rt50yi4tl36" path="res://blocks/Years/Year_Block_Assassination.tscn" id="6_t73s7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg3y7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4j6xf"]
+material = SubResource("StandardMaterial3D_sg3y7")
+size = Vector2(20, 20)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pwtyl"]
+viewport_path = NodePath("2D/38-39")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wkdhs"]
+viewport_path = NodePath("2D/41")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yb2id"]
+viewport_path = NodePath("2D/42")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w23m6"]
+viewport_path = NodePath("2D/43")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l5lbc"]
+viewport_path = NodePath("2D/von_Stauffenberg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77604"]
+albedo_color = Color(0.529412, 0.137255, 0.254902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ffmsa"]
+material = SubResource("StandardMaterial3D_77604")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nh6rr"]
+viewport_path = NodePath("2D/Assassination")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_al7sq"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5sgpt"]
+sky_material = SubResource("ProceduralSkyMaterial_al7sq")
+
+[sub_resource type="Environment" id="Environment_qred5"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_5sgpt")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Valkyrie" type="Node3D"]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.201916, 0.979403, 0, -0.979403, 0.201916, -1.17481, 10.0642, 4.4069)
+fov = 60.0
+
+[node name="Background" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_4j6xf")
+metadata/_edit_lock_ = true
+
+[node name="38-39" type="Sprite3D" parent="."]
+transform = Transform3D(-1.74846e-08, -0.4, -1.74846e-08, 0, -1.74846e-08, 0.4, -0.4, 1.74846e-08, 7.64274e-16, -6.69478, 0.01, 4.80867)
+texture = SubResource("ViewportTexture_pwtyl")
+metadata/_edit_lock_ = true
+
+[node name="41" type="Sprite3D" parent="."]
+transform = Transform3D(0.282843, -0.282843, -1.74846e-08, 1.23634e-08, -1.23634e-08, 0.4, -0.282843, -0.282843, 7.64274e-16, -5.18783, 0.01, -0.385018)
+texture = SubResource("ViewportTexture_wkdhs")
+metadata/_edit_lock_ = true
+
+[node name="42" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -1.54931, 0.01, -1.89423)
+texture = SubResource("ViewportTexture_yb2id")
+metadata/_edit_lock_ = true
+
+[node name="43" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, -1.90744)
+texture = SubResource("ViewportTexture_w23m6")
+metadata/_edit_lock_ = true
+
+[node name="von_Stauffenberg" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.39419, 0.0163252, 4.72586)
+texture = SubResource("ViewportTexture_l5lbc")
+
+[node name="Connections" type="Node3D" parent="von_Stauffenberg"]
+metadata/_edit_lock_ = true
+
+[node name="Connection_CZ" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(2.11643, 1.28028e-08, 0.100159, 2.11643, -3.09086e-08, -0.100159, 3.83197e-08, 0.999999, -4.37809e-09, -5.759, -2.251, -0.0199999)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_PL" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(2.99308, 0, 6.19155e-09, 1.30832e-07, -3.55271e-15, -0.141646, 0, 0.999999, 4.44089e-16, -5.759, 3.61714, -0.0199996)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_SU" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(2.11643, -1.28028e-08, -0.100159, -2.11643, -3.09086e-08, -0.100159, -3.83197e-08, 0.999998, -4.37809e-09, -3.82168, 7.34057, -0.0199994)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_TN" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(-0.00103435, 0.000108389, 0.141662, 4.3699, 2.77983e-05, 3.35305e-05, -0.000121279, 1.00001, -1.5356e-05, 0.518442, 9.41644, -0.0199993)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_TN_Def1" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(3.42359, 8.91556e-05, 0.0880365, 2.7157, -6.76792e-05, -0.110985, -0.000121352, 1.00001, -1.53608e-05, 3.59379, 22.0121, -0.0199987)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_TN_Def2" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(4.75974, 0, 6.19155e-09, 2.08055e-07, 7.10543e-15, -0.141646, 2.5411e-21, 0.999998, 4.44089e-16, 11.6879, 24.7056, -0.0199986)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Connection_TN_Def3" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+transform = Transform3D(-3.42466, 7.79686e-08, 0.0879928, 2.71435, -2.71515e-08, 0.111019, 3.40711e-07, 1.00001, -3.84628e-09, 19.7913, 22.0223, -0.0199987)
+mesh = SubResource("PlaneMesh_ffmsa")
+skeleton = NodePath("../..")
+
+[node name="Assassination" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, 3.9925)
+texture = SubResource("ViewportTexture_nh6rr")
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_qred5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 17.4239, 0)
+shadow_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="2D" type="Node" parent="."]
+
+[node name="38-39" type="SubViewport" parent="2D"]
+size = Vector2i(1600, 640)
+
+[node name="Year_Block_38-39" parent="2D/38-39" instance=ExtResource("1_n02dw")]
+
+[node name="41" type="SubViewport" parent="2D"]
+size = Vector2i(800, 640)
+
+[node name="Year_Block_41" parent="2D/41" instance=ExtResource("2_g58ui")]
+
+[node name="42" type="SubViewport" parent="2D"]
+size = Vector2i(800, 640)
+
+[node name="Year_Block_42" parent="2D/42" instance=ExtResource("3_fj117")]
+
+[node name="43" type="SubViewport" parent="2D"]
+size = Vector2i(1600, 1280)
+
+[node name="Year_Block" parent="2D/43" instance=ExtResource("4_gemi1")]
+
+[node name="von_Stauffenberg" type="SubViewport" parent="2D"]
+size = Vector2i(800, 1220)
+
+[node name="von_Stauffenberg" parent="2D/von_Stauffenberg" instance=ExtResource("5_t47ny")]
+
+[node name="Assassination" type="SubViewport" parent="2D"]
+size = Vector2i(1600, 1280)
+
+[node name="Year_Block_Assassination" parent="2D/Assassination" instance=ExtResource("6_t73s7")]

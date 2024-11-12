@@ -12,20 +12,73 @@
 script/source = "extends Node3D
 
 @onready var focused_on: Sprite3D = $Assassination
+@onready var Camera: Camera3D = $Camera
+@export var ignore_input: bool = false
+var start: bool = true
+
+
+
+func get_destination() -> Marker3D:
+	
+	if Input.is_action_just_pressed(\"38\"):
+		return $\"Anchors/38\"
+	if Input.is_action_just_pressed(\"39\"):
+		return $\"Anchors/39\"
+	if Input.is_action_just_pressed(\"41\"):
+		return $\"Anchors/41\"
+	if Input.is_action_just_pressed(\"42\"):
+		return $\"Anchors/42\"
+	if Input.is_action_just_pressed(\"43\"):
+		return $\"Anchors/43\"
+	if Input.is_action_just_pressed(\"41\"):
+		return $\"Anchors/41\"
+	
+	if Input.is_action_just_pressed(\"Q1\"):
+		return $\"Anchors/43_Q1\"
+	if Input.is_action_just_pressed(\"Q2\"):
+		return $\"Anchors/43_Q2\"
+	if Input.is_action_just_pressed(\"Q3\"):
+		return $\"Anchors/43_Q3\"
+	if Input.is_action_just_pressed(\"Q4\"):
+		return $\"Anchors/43_Q4\"
+	
+	if Input.is_action_just_pressed(\"Hitler\"):
+		return $\"Anchors/Hitler\"
+	if Input.is_action_just_pressed(\"Overview\"):
+		return $\"Anchors/Overview\"
+	
+	return null
 
 
 
 func _input(_event: InputEvent) -> void:
 	
-	if Input.is_action_just_pressed(\"Mouse_Click\"):
+	if ignore_input:
+		return
+	
+	if Input.is_action_just_pressed(\"MOUSE_CLICK\") and start:
+		$AnimationPlayer.play(\"Intro\")
+		start = false
+	
+	if Input.is_action_just_pressed(\"MOUSE_CLICK\"):
 		focused_on.reveal()
+	
+	if not Input.is_anything_pressed():
+		return
+	
+	var go_to: Marker3D = get_destination()
+	if go_to == null:
+		return
+	
+	var tween: Tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(Camera, \"position\", go_to.position, 1)
+	tween.tween_property(Camera, \"rotation\", go_to.rotation, 1)
 
 
 
 func _process(_delta: float) -> void:
 	
-	if Input.is_action_just_pressed(\"Mouse_Click\"):
-		$AnimationPlayer.play(\"Intro\")
+	pass
 "
 
 [sub_resource type="Animation" id="Animation_8ym5y"]
@@ -56,6 +109,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-1.5708, 0.104719, 0), Vector3(-1.5708, -0.453786, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:ignore_input")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_o72ta"]
 length = 0.001
@@ -82,6 +147,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-1.5708, 0.104719, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:ignore_input")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xeo0s"]
@@ -146,17 +223,55 @@ libraries = {
 
 [node name="Anchors" type="Node" parent="."]
 
-[node name="Anchor_Start" type="Marker3D" parent="Anchors"]
+[node name="Hitler" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.994522, -0.104528, -4.56908e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, 1.29, 1.64, 2.98)
 metadata/_edit_lock_ = true
 
-[node name="Anchor_Intro" type="Marker3D" parent="Anchors"]
+[node name="Intro" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.882948, 0.469472, 2.05213e-08, 0, -4.37114e-08, 1, 0.469472, -0.882948, -3.85949e-08, 1.3, 16, 2.8)
 metadata/_edit_lock_ = true
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.994522, -0.104528, -4.56906e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, 1.29, 1.64, 2.98)
+[node name="38" type="Marker3D" parent="Anchors"]
+transform = Transform3D(-0.0815553, -0.996669, -4.35658e-08, 0, -4.37114e-08, 1, -0.996669, 0.0815553, 3.5649e-09, -6.76442, 1.81139, 6.25119)
 metadata/_edit_lock_ = true
+
+[node name="39" type="Marker3D" parent="Anchors"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -6.76442, 1.75672, 3.31777)
+metadata/_edit_lock_ = true
+
+[node name="41" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.679186, -0.733967, -3.20827e-08, 0, -4.37114e-08, 1, -0.733967, -0.679186, -2.96881e-08, -5.19388, 1.64687, -0.36666)
+metadata/_edit_lock_ = true
+
+[node name="42" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.999995, -0.00312367, -1.3654e-10, 0, -4.37114e-08, 1, -0.00312367, -0.999995, -4.37112e-08, -1.39579, 1.66648, -1.91704)
+metadata/_edit_lock_ = true
+
+[node name="43" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.999995, -0.00312367, -1.3654e-10, 0, -4.37114e-08, 1, -0.00312367, -0.999995, -4.37112e-08, 3.9826, 3.37808, -1.9597)
+metadata/_edit_lock_ = true
+
+[node name="43_Q1" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.998905, -0.0467922, -2.04535e-09, -1.11022e-15, -4.37114e-08, 1, -0.0467922, -0.998905, -4.36635e-08, 2.5688, 1.79543, -3.24145)
+metadata/_edit_lock_ = true
+
+[node name="43_Q2" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.998905, -0.0467922, -2.04535e-09, -1.11022e-15, -4.37114e-08, 1, -0.0467922, -0.998905, -4.36635e-08, 5.28906, 1.79543, -3.24146)
+metadata/_edit_lock_ = true
+
+[node name="43_Q3" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.999666, 0.0258285, 1.129e-09, -1.33227e-15, -4.37114e-08, 1, 0.0258285, -0.999666, -4.36968e-08, 2.6872, 1.70622, -0.615077)
+metadata/_edit_lock_ = true
+
+[node name="43_Q4" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.999666, 0.0258285, 1.129e-09, -1.33227e-15, -4.37114e-08, 1, 0.0258285, -0.999666, -4.36968e-08, 5.59832, 1.70622, -0.61508)
+metadata/_edit_lock_ = true
+
+[node name="Overview" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.762871, -0.602753, 0.233916, 0.0429017, 0.408184, 0.911891, -0.645126, -0.68562, 0.337251, 1.29, 6.26953, 5.03421)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(0.994522, -0.104528, -3.78389e-07, 0, -3.61999e-06, 1, -0.104528, -0.994522, -3.60016e-06, 1.29, 1.64, 2.98)
 
 [node name="Background" type="MeshInstance3D" parent="."]
 visible = false

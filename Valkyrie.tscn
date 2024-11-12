@@ -1,11 +1,94 @@
-[gd_scene load_steps=20 format=3 uid="uid://brm8jqymwapwr"]
+[gd_scene load_steps=25 format=3 uid="uid://brm8jqymwapwr"]
 
+[ext_resource type="Script" path="res://scripts/Sprite_To_Viewport.gd" id="1_5p76a"]
 [ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Year_Block_38-39.tscn" id="1_n02dw"]
 [ext_resource type="PackedScene" uid="uid://drm56nw8s7ixe" path="res://blocks/Years/Year_Block_41.tscn" id="2_g58ui"]
 [ext_resource type="PackedScene" uid="uid://bpqnkcrdibnjm" path="res://blocks/Years/Year_Block_42.tscn" id="3_fj117"]
 [ext_resource type="PackedScene" uid="uid://csejo6m01imvs" path="res://blocks/Years/Year_Block_43.tscn" id="4_gemi1"]
 [ext_resource type="PackedScene" uid="uid://b5o5j8dpsimrm" path="res://blocks/von_Stauffenberg.tscn" id="5_t47ny"]
 [ext_resource type="PackedScene" uid="uid://c2rt50yi4tl36" path="res://blocks/Years/Year_Block_Assassination.tscn" id="6_t73s7"]
+
+[sub_resource type="GDScript" id="GDScript_vqg68"]
+script/source = "extends Node3D
+
+@onready var focused_on: Sprite3D = $Assassination
+
+
+
+func _input(_event: InputEvent) -> void:
+	
+	if Input.is_action_just_pressed(\"Mouse_Click\"):
+		focused_on.reveal()
+
+
+
+func _process(_delta: float) -> void:
+	
+	if Input.is_action_just_pressed(\"Mouse_Click\"):
+		$AnimationPlayer.play(\"Intro\")
+"
+
+[sub_resource type="Animation" id="Animation_8ym5y"]
+resource_name = "Intro"
+length = 20.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(2.37841, 1),
+"update": 0,
+"values": [Vector3(1.29, 1.64, 2.98), Vector3(1.29, 12, 2.98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(2.37841, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0.104719, 0), Vector3(-1.5708, -0.453786, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o72ta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.29, 1.64, 2.98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0.104719, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xeo0s"]
+_data = {
+"Intro": SubResource("Animation_8ym5y"),
+"RESET": SubResource("Animation_o72ta")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg3y7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -54,39 +137,66 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Valkyrie" type="Node3D"]
+script = SubResource("GDScript_vqg68")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xeo0s")
+}
+
+[node name="Anchors" type="Node" parent="."]
+
+[node name="Anchor_Start" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.994522, -0.104528, -4.56908e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, 1.29, 1.64, 2.98)
+metadata/_edit_lock_ = true
+
+[node name="Anchor_Intro" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.882948, 0.469472, 2.05213e-08, 0, -4.37114e-08, 1, 0.469472, -0.882948, -3.85949e-08, 1.3, 16, 2.8)
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.201916, 0.979403, 0, -0.979403, 0.201916, -1.17481, 10.0642, 4.4069)
-fov = 60.0
+transform = Transform3D(0.994522, -0.104528, -4.56906e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, 1.29, 1.64, 2.98)
+metadata/_edit_lock_ = true
 
 [node name="Background" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("PlaneMesh_4j6xf")
 metadata/_edit_lock_ = true
 
-[node name="38-39" type="Sprite3D" parent="."]
+[node name="38-39" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(-1.74846e-08, -0.4, -1.74846e-08, 0, -1.74846e-08, 0.4, -0.4, 1.74846e-08, 7.64274e-16, -6.69478, 0.01, 4.80867)
 texture = SubResource("ViewportTexture_pwtyl")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/38-39/Year_Block_38-39")
 metadata/_edit_lock_ = true
 
-[node name="41" type="Sprite3D" parent="."]
+[node name="41" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(0.282843, -0.282843, -1.74846e-08, 1.23634e-08, -1.23634e-08, 0.4, -0.282843, -0.282843, 7.64274e-16, -5.18783, 0.01, -0.385018)
 texture = SubResource("ViewportTexture_wkdhs")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/41/Year_Block_41")
 metadata/_edit_lock_ = true
 
-[node name="42" type="Sprite3D" parent="."]
+[node name="42" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -1.54931, 0.01, -1.89423)
 texture = SubResource("ViewportTexture_yb2id")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/42/Year_Block_42")
 metadata/_edit_lock_ = true
 
-[node name="43" type="Sprite3D" parent="."]
+[node name="43" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, -1.90744)
 texture = SubResource("ViewportTexture_w23m6")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/43/Year_Block")
 metadata/_edit_lock_ = true
 
-[node name="von_Stauffenberg" type="Sprite3D" parent="."]
+[node name="von_Stauffenberg" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.39419, 0.0163252, 4.72586)
+visible = false
 texture = SubResource("ViewportTexture_l5lbc")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/von_Stauffenberg/von_Stauffenberg")
 
 [node name="Connections" type="Node3D" parent="von_Stauffenberg"]
 metadata/_edit_lock_ = true
@@ -126,9 +236,12 @@ transform = Transform3D(-3.42466, 7.79686e-08, 0.0879928, 2.71435, -2.71515e-08,
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
 
-[node name="Assassination" type="Sprite3D" parent="."]
+[node name="Assassination" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, 3.9925)
 texture = SubResource("ViewportTexture_nh6rr")
+script = ExtResource("1_5p76a")
+block_reference = NodePath("../2D/Assassination/Year_Block_Assassination")
+metadata/_edit_lock_ = true
 
 [node name="Environment" type="Node" parent="."]
 

@@ -60,6 +60,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="Shape/Layout"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.139
@@ -166,6 +167,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_exolb")
 metadata/_edit_lock_ = true
 
 [node name="Spark" type="TextureRect" parent="Shape"]
+visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = -1
@@ -202,6 +204,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Spark_Result" type="Label" parent="Shape/Spark"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.358575
@@ -221,6 +224,7 @@ text = "- result: no sparks"
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Manstein" type="TextureRect" parent="Shape/Spark"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -256,6 +260,7 @@ text = "von Manstein"
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Kluge" type="TextureRect" parent="Shape/Spark"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -290,6 +295,7 @@ theme = ExtResource("4_eww8d")
 text = "von Kluge"
 
 [node name="von_Rundstedt" type="TextureRect" parent="Shape/Spark"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -325,6 +331,7 @@ text = "von Rundstedt"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hire_Result" type="Label" parent="Shape/Spark"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.28352
@@ -381,7 +388,8 @@ text = "Axis defeat in Tunisia"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Hire_Result" type="Label" parent="Shape/Tunisia"]
+[node name="Stauffenberg_Injury" type="Label" parent="Shape/Tunisia"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.868
@@ -403,6 +411,7 @@ fingers on the left hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Valkyrie" type="TextureRect" parent="Shape"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -439,6 +448,7 @@ text = "- Tresckow revises \"Valkyrie\"
 - Supplementary orders written"
 
 [node name="Fromm" type="TextureRect" parent="Shape"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -473,6 +483,7 @@ theme = ExtResource("4_eww8d")
 text = "Fromm"
 
 [node name="Fromm_Result" type="Label" parent="Shape/Fromm"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.330744

@@ -49,6 +49,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="Shape"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.523
@@ -64,6 +65,7 @@ text = ": new beginning"
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Tresckow" type="TextureRect" parent="Shape"]
+visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -99,6 +101,7 @@ text = "von Tresckow"
 metadata/_edit_use_anchors_ = true
 
 [node name="New_Resistance_Leader" type="Label" parent="Shape/von_Tresckow"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.269552
@@ -118,6 +121,7 @@ text = "- new resistance leader"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hires_Oppositionists" type="Label" parent="Shape/von_Tresckow"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.311002

@@ -149,6 +149,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Moltke" type="TextureRect" parent="Shape_38-39"]
+visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -184,6 +185,7 @@ theme = ExtResource("5_wwtlc")
 text = "von Moltke"
 
 [node name="Hitler_On_Trial" type="Label" parent="Shape_38-39/von_Moltke"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.338889

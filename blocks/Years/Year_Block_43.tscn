@@ -1,20 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://csejo6m01imvs"]
+[gd_scene load_steps=18 format=3 uid="uid://csejo6m01imvs"]
 
 [ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_2x2s2"]
 [ext_resource type="Texture2D" uid="uid://drrcqn6jfehxf" path="res://images/1943/Spark.jpg" id="3_oqnt8"]
 [ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="3_scjkn"]
 [ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="4_eww8d"]
 [ext_resource type="Texture2D" uid="uid://difougol8mhws" path="res://images/1943/von_Manstein.jpg" id="5_am62x"]
+[ext_resource type="Texture2D" uid="uid://bf22sviu0gd6m" path="res://images/icons/cross.png" id="5_nuxbf"]
 [ext_resource type="Texture2D" uid="uid://cm23brdoiv465" path="res://images/1943/von_Rundstedt.jpg" id="6_2ta3w"]
 [ext_resource type="Texture2D" uid="uid://bh3vyogvuu33v" path="res://images/1943/von_Kluge.webp" id="6_5yb10"]
 [ext_resource type="Texture2D" uid="uid://clnc0gef310lf" path="res://images/1943/Tunisia.png" id="8_0ibxh"]
 [ext_resource type="Texture2D" uid="uid://df1pmmr0hxwk4" path="res://images/1943/Valkyrie.jpg" id="9_48qnp"]
+[ext_resource type="FontFile" uid="uid://cqt6e6ppsgrsd" path="res://font/FunnelDisplay-Bold.ttf" id="9_p17ea"]
+[ext_resource type="Texture2D" uid="uid://c2avi8pae5wd5" path="res://images/icons/arrow.png" id="10_e74yk"]
 [ext_resource type="Texture2D" uid="uid://dpphtoiv6lstc" path="res://images/1943/Fromm.jpg" id="10_y4os3"]
 
 [sub_resource type="GDScript" id="GDScript_vpoiv"]
 script/source = "extends CanvasLayer
 
-@onready var to_show: Array = [%Spark, %Spark_Result, %von_Manstein, %von_Rundstedt, %von_Kluge, %Hire_Result, %Meet, %Valkyrie, %Fromm, %Fromm_Result, %Description]
+@onready var to_show: Array = [%Spark, %Spark_Result, %von_Manstein, %von_Rundstedt, %von_Kluge, %Hire_Result, %Meet, %Valkyrie, %Fromm, %Fromm_Result, %Description, %Stauffenberg_Injury]
 var i: int = 0
 
 
@@ -44,6 +47,10 @@ corner_radius_bottom_left = 100
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exolb"]
 bg_color = Color(0.8, 0.8, 0.8, 1)
 
+[sub_resource type="Theme" id="Theme_2mimt"]
+default_font = ExtResource("9_p17ea")
+default_font_size = 20
+
 [node name="Year_Block" type="CanvasLayer"]
 script = SubResource("GDScript_vpoiv")
 
@@ -52,6 +59,7 @@ custom_minimum_size = Vector2(1600, 1280)
 offset_right = 1600.0
 offset_bottom = 1280.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+metadata/_edit_lock_ = true
 
 [node name="Layout" type="Control" parent="Shape"]
 layout_mode = 1
@@ -245,6 +253,22 @@ theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
 text = "- result: no sparks"
 metadata/_edit_use_anchors_ = true
 
+[node name="Cross" type="TextureRect" parent="Shape/Spark/Spark_Result"]
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.685
+anchor_top = -6.841
+anchor_right = 1.132
+anchor_bottom = -4.659
+offset_left = 0.0864716
+offset_top = -0.0093689
+offset_right = 13.1793
+offset_bottom = -0.0175629
+texture = ExtResource("5_nuxbf")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="von_Manstein" type="TextureRect" parent="Shape/Spark"]
 unique_name_in_owner = true
 visible = false
@@ -376,6 +400,101 @@ theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
 text = "- result: nah man"
 metadata/_edit_use_anchors_ = true
 
+[node name="Refused_Manstein" type="Label" parent="Shape/Spark/Hire_Result"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.261602
+anchor_top = -9.94457
+anchor_right = 0.298398
+anchor_bottom = -8.9808
+offset_left = -2.21
+offset_top = 14.3168
+offset_right = -2.01
+offset_bottom = 0.0559998
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "REFUSED"
+metadata/_edit_use_anchors_ = true
+
+[node name="Refused_Rundstedt" type="Label" parent="Shape/Spark/Hire_Result"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.57004
+anchor_top = -8.55923
+anchor_right = 1.11604
+anchor_bottom = -7.68623
+offset_left = 0.084465
+offset_top = 0.000213623
+offset_right = 3.15446
+offset_bottom = -9.90381
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0872665
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "REFUSED"
+metadata/_edit_use_anchors_ = true
+
+[node name="Refused_Kluge" type="Label" parent="Shape/Spark/Hire_Result"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.31136
+anchor_top = -5.14734
+anchor_right = 0.23364
+anchor_bottom = -4.27434
+offset_left = -0.0940018
+offset_top = 0.0117188
+offset_right = 3.18101
+offset_bottom = -9.89227
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0872665
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "REFUSED"
+metadata/_edit_use_anchors_ = true
+
+[node name="Kluge_Agreed" type="Label" parent="Shape/Spark/Hire_Result/Refused_Kluge"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.27614
+anchor_top = 3.50818
+anchor_right = 2.14614
+anchor_bottom = 5.38718
+offset_left = -3.64897
+offset_top = 7.25888
+offset_right = 0.300995
+offset_bottom = 0.130829
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0698132
+theme = SubResource("Theme_2mimt")
+theme_override_colors/font_color = Color(1, 0.686275, 0.270588, 1)
+text = "(he agreed
+later on)"
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="TextureRect" parent="Shape/Spark/Hire_Result/Refused_Kluge"]
+modulate = Color(1, 0.686275, 0.270588, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.05876
+anchor_top = 4.23539
+anchor_right = 1.24176
+anchor_bottom = 4.89139
+offset_left = 20.9956
+offset_top = 20.9998
+offset_right = 20.9506
+offset_bottom = 21.0078
+rotation = 3.14159
+texture = ExtResource("10_e74yk")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="Tunisia" type="TextureRect" parent="Shape"]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -415,6 +534,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stauffenberg_Injury" type="Label" parent="Shape/Tunisia"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -482,10 +602,10 @@ visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.645
-anchor_top = 0.526969
-anchor_right = 0.87025
-anchor_bottom = 0.919537
+anchor_left = 0.743125
+anchor_top = 0.531656
+anchor_right = 0.968375
+anchor_bottom = 0.924224
 offset_top = 0.47998
 offset_right = -0.400024
 offset_bottom = 0.230774
@@ -515,10 +635,10 @@ text = "Fromm"
 [node name="Commander" type="Label" parent="Shape/Fromm"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.422222
-anchor_top = 0.439888
-anchor_right = 0.217556
-anchor_bottom = 0.557654
+anchor_left = -0.863889
+anchor_top = 0.0556085
+anchor_right = -0.224111
+anchor_bottom = 0.173375
 offset_top = 0.0712891
 offset_right = -2.32
 offset_bottom = 7.92456
@@ -536,20 +656,40 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.330744
-anchor_top = 1.04854
-anchor_right = 1.07774
-anchor_bottom = 1.25854
+anchor_left = -0.555367
+anchor_top = 0.178435
+anchor_right = -0.189815
+anchor_bottom = 0.260465
 offset_left = -3.06791
 offset_top = 9.38312
 offset_right = 0.333466
 offset_bottom = 0.184692
 grow_horizontal = 2
 grow_vertical = 0
-rotation = -0.0698132
+rotation = 0.0349066
 theme = ExtResource("4_eww8d")
 theme_override_colors/font_color = Color(1, 0.686275, 0.270588, 1)
 text = "- result: ???"
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrested" type="Label" parent="Shape/Fromm"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.875
+anchor_top = 0.386
+anchor_right = 0.959
+anchor_bottom = 0.745
+offset_left = 3.05176e-05
+offset_top = 0.136185
+offset_right = 5.75998
+offset_bottom = -23.1672
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0349066
+theme = ExtResource("1_2x2s2")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "ARRESTED"
 metadata/_edit_use_anchors_ = true
 
 [node name="Meet" type="Label" parent="Shape"]

@@ -1,17 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5o5j8dpsimrm"]
+[gd_scene load_steps=7 format=3 uid="uid://b5o5j8dpsimrm"]
 
 [ext_resource type="Texture2D" uid="uid://b21nw65dc2f55" path="res://images/Stauffenberg.jpg" id="1_gfgqx"]
 [ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="2_m3imw"]
+[ext_resource type="Texture2D" uid="uid://6su8vshotb6y" path="res://images/Flag_of_German_Empire.svg" id="3_wbjrg"]
+[ext_resource type="Texture2D" uid="uid://cvla43i1cipuo" path="res://images/Catholic_Cross.png" id="4_q1sro"]
+[ext_resource type="Texture2D" uid="uid://3et4vcvbrwju" path="res://images/icons/Small_Cross.png" id="5_1ovnh"]
+
+[sub_resource type="GDScript" id="GDScript_ofrl7"]
+script/source = "extends CanvasLayer
+
+
+@onready var to_show: Array = [%Flag, %Despises_Hitler, %Catholic_Cross, %Shot]
+var i: int = 0
+
+
+func reveal():
+	
+	if (i == -1):
+		return
+	to_show[i].show()
+	i += 1
+	if (i == to_show.size()):
+		i = -1
+"
 
 [node name="von_Stauffenberg" type="CanvasLayer"]
+script = SubResource("GDScript_ofrl7")
 
 [node name="Photo" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(800, 0)
-offset_right = 400.0
-offset_bottom = 571.429
+offset_right = 800.0
+offset_bottom = 1142.86
 texture = ExtResource("1_gfgqx")
 expand_mode = 5
 stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="Name" type="Label" parent="Photo"]
 layout_mode = 1
@@ -28,3 +51,84 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_m3imw")
 text = "von Stauffenberg"
+
+[node name="Flag" type="TextureRect" parent="Photo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695
+anchor_top = 0.007
+anchor_right = 0.94
+anchor_bottom = 0.211
+offset_left = -7.00006
+offset_top = -2.00001
+offset_right = 54.9999
+offset_bottom = -63.1429
+rotation = 0.270526
+texture = ExtResource("3_wbjrg")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Despises_Hitler" type="Label" parent="Photo"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06775
+anchor_top = 0.781875
+anchor_right = 0.34775
+anchor_bottom = 0.922875
+offset_left = -0.200005
+offset_top = 0.428467
+offset_right = 19.8
+offset_bottom = -31.7144
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.13439
+theme = ExtResource("2_m3imw")
+theme_override_colors/font_color = Color(0.745098, 0.0745098, 0.266667, 1)
+text = "- Despises
+Hitler"
+metadata/_edit_use_anchors_ = true
+
+[node name="Catholic_Cross" type="TextureRect" parent="Photo"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 0.686275, 0.270588, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.049
+anchor_top = -0.013
+anchor_right = 0.288
+anchor_bottom = 0.296
+offset_left = -41.8
+offset_top = 41.8571
+offset_right = 2.59999
+offset_bottom = 2.71426
+rotation = -0.13439
+texture = ExtResource("4_q1sro")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot" type="TextureRect" parent="Photo"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10975
+anchor_top = 0.36025
+anchor_right = 0.47775
+anchor_bottom = 0.60225
+offset_left = 0.199997
+offset_top = 0.284698
+offset_right = -7.65253
+offset_bottom = 10.2601
+rotation = -0.0349066
+texture = ExtResource("5_1ovnh")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

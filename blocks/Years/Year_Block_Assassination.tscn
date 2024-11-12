@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2rt50yi4tl36"]
+[gd_scene load_steps=18 format=3 uid="uid://c2rt50yi4tl36"]
 
 [ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_0xijd"]
+[ext_resource type="Texture2D" uid="uid://3et4vcvbrwju" path="res://images/icons/Small_Cross.png" id="2_m6jp2"]
 [ext_resource type="Texture2D" uid="uid://bxptfp7rxkwuj" path="res://images/Assassination/Hitler.jpg" id="2_wp5nq"]
 [ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="2_yb6v3"]
 [ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="3_snvit"]
@@ -12,11 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://c2avi8pae5wd5" path="res://images/icons/arrow.png" id="8_4qk5y"]
 [ext_resource type="Texture2D" uid="uid://b0w772hm5lqig" path="res://images/Assassination/Stülpnagel.jpg" id="8_7van6"]
 [ext_resource type="Texture2D" uid="uid://d0yqpv28heoyr" path="res://images/Assassination/von_Hase.jpg" id="10_br4rx"]
+[ext_resource type="Texture2D" uid="uid://dg8gfp2d3w2g1" path="res://images/Assassination/Wilhelmstrasse.webp" id="14_0t5p0"]
+[ext_resource type="Texture2D" uid="uid://d2jwhc1mw5n71" path="res://images/icons/Biplane.png" id="15_2apbb"]
 
 [sub_resource type="GDScript" id="GDScript_8tmex"]
 script/source = "extends CanvasLayer
 
-@onready var to_show: Array = [%\"42_ass\", %Olbricht, %Shape, %Wolfs_Lair, %Lindermann, %\"von Stulpnagel\", %\"von Hase\", %Goebbels, %And_Others, %Himmler]
+@onready var to_show: Array = [%\"42_ass\", %Olbricht, %Shape, %Wolfs_Lair, %Bomb_Cross, %Hitler_Dead, %Plane, %Lindermann, %\"von Stulpnagel\", %\"von Hase\", %Goebbels, %And_Others, %Himmler, %Hitler_Dead]
 var i: int = 0
 
 
@@ -25,8 +28,12 @@ func reveal():
 	
 	if (i == -1):
 		return
+		
+	if to_show[i].visible:
+		to_show[i].hide()
+	elif to_show[i].hidden:
+		to_show[i].show()
 	
-	to_show[i].show()
 	i += 1
 	if (i == to_show.size()):
 		i = -1
@@ -88,6 +95,26 @@ message
 7. We did it!"
 metadata/_edit_use_anchors_ = true
 
+[node name="Bomb_Cross" type="TextureRect" parent="Base/Shape/Plan"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.834652
+anchor_top = 0.00952398
+anchor_right = 0.977822
+anchor_bottom = 0.135254
+offset_left = 0.0599823
+offset_top = -0.000213623
+offset_right = 0.201965
+offset_bottom = -0.00823975
+rotation = -0.0349066
+texture = ExtResource("2_m6jp2")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="Title" type="Label" parent="Base/Shape"]
 layout_mode = 1
 anchors_preset = -1
@@ -121,6 +148,7 @@ texture = ExtResource("2_wp5nq")
 expand_mode = 5
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Name" type="Label" parent="Base/Hitler"]
 layout_mode = 1
@@ -160,6 +188,26 @@ theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
 text = "42 assassination
 attempts!"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Hitler_Dead" type="TextureRect" parent="Base/Hitler"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.658588
+anchor_top = -0.00284844
+anchor_right = 1.00313
+anchor_bottom = 0.247887
+offset_left = 0.0599823
+offset_top = -0.000213623
+offset_right = 0.201965
+offset_bottom = -0.00823975
+rotation = -0.0349066
+texture = ExtResource("2_m6jp2")
+expand_mode = 3
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Goebbels" type="TextureRect" parent="Base"]
@@ -464,6 +512,24 @@ expand_mode = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="Broadcast_Cross" type="TextureRect" parent="Base/Lindermann"]
+modulate = Color(0.745098, 0.192157, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.21457
+anchor_top = 0.788286
+anchor_right = 1.63375
+anchor_bottom = 1.11603
+offset_left = -0.0397644
+offset_top = 0.0500031
+offset_right = -0.725113
+offset_bottom = 0.694641
+rotation = -0.0349066
+texture = ExtResource("2_m6jp2")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="von Stulpnagel" type="TextureRect" parent="Base"]
 unique_name_in_owner = true
 visible = false
@@ -555,10 +621,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Description" type="Label" parent="Base/von Hase"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0293143
-anchor_top = 1.12831
-anchor_right = 0.976714
-anchor_bottom = 1.367
+anchor_left = 0.0561006
+anchor_top = 1.0898
+anchor_right = 1.0035
+anchor_bottom = 1.32849
 offset_left = 1.4336
 offset_top = -1.10352
 offset_right = 1.21599
@@ -568,8 +634,45 @@ grow_vertical = 0
 rotation = 0.0174533
 theme = ExtResource("3_snvit")
 theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
-text = "Secured Wilhelm-
-strasse"
+text = "- orders to secure
+Wilhelmstrasse"
+metadata/_edit_use_anchors_ = true
+
+[node name="Wilhelmstrasse" type="TextureRect" parent="Base/von Hase"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.763393
+anchor_top = -0.0645714
+anchor_right = 1.42521
+anchor_bottom = 0.344106
+offset_left = 0.000152588
+offset_top = 0.03304
+offset_right = 15.7521
+offset_bottom = -21.1111
+rotation = 0.13439
+texture = ExtResource("14_0t5p0")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Plane" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.745098, 0.0745098, 0.266667, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.833
+anchor_right = 0.552
+anchor_bottom = 0.957
+offset_left = -19.4
+offset_top = 17.7599
+offset_right = 1.79993
+offset_bottom = 1.04004
+rotation = -0.13439
+texture = ExtResource("15_2apbb")
+expand_mode = 5
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="And_Others" type="Label" parent="Base"]
@@ -577,19 +680,19 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.355
+anchor_left = 0.336
 anchor_top = 0.726906
-anchor_right = 0.556
-anchor_bottom = 0.833906
-offset_left = -6.10352e-05
+anchor_right = 0.575
+anchor_bottom = 0.834
+offset_left = 30.3999
 offset_top = 0.559937
-offset_right = -0.599976
-offset_bottom = 0.599976
+offset_right = -31.0001
+offset_bottom = 0.479614
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_snvit")
-text = "And other officers and men I
-was too lazy to add here. 
+text = "And countless officers and men
+I was too lazy to add here. 
 Trust me, it was a massive
 coup, not just these 4 guys."
 metadata/_edit_use_anchors_ = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://brm8jqymwapwr"]
+[gd_scene load_steps=26 format=3 uid="uid://brm8jqymwapwr"]
 
 [ext_resource type="Script" path="res://scripts/Sprite_To_Viewport.gd" id="1_5p76a"]
 [ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Year_Block_38-39.tscn" id="1_n02dw"]
@@ -14,6 +14,7 @@ script/source = "extends Node3D
 @onready var focused_on: Sprite3D = $Assassination
 @onready var Camera: Camera3D = $Camera
 @export var ignore_input: bool = false
+@export var play_intro: bool = true
 var start: bool = true
 
 
@@ -21,31 +22,50 @@ var start: bool = true
 func get_destination() -> Marker3D:
 	
 	if Input.is_action_just_pressed(\"38\"):
+		focused_on = $\"38-39\"
 		return $\"Anchors/38\"
 	if Input.is_action_just_pressed(\"39\"):
+		focused_on = $\"38-39\"
 		return $\"Anchors/39\"
 	if Input.is_action_just_pressed(\"41\"):
+		focused_on = $\"41\"
 		return $\"Anchors/41\"
 	if Input.is_action_just_pressed(\"42\"):
+		focused_on = $\"42\"
 		return $\"Anchors/42\"
 	if Input.is_action_just_pressed(\"43\"):
+		focused_on = $\"43\"
 		return $\"Anchors/43\"
-	if Input.is_action_just_pressed(\"41\"):
-		return $\"Anchors/41\"
+	if Input.is_action_just_pressed(\"44\"):
+		focused_on = $Assassination
+		return $\"Anchors/44\"
 	
 	if Input.is_action_just_pressed(\"Q1\"):
+		focused_on = $\"43\"
 		return $\"Anchors/43_Q1\"
 	if Input.is_action_just_pressed(\"Q2\"):
+		focused_on = $\"43\"
 		return $\"Anchors/43_Q2\"
 	if Input.is_action_just_pressed(\"Q3\"):
+		focused_on = $\"43\"
 		return $\"Anchors/43_Q3\"
 	if Input.is_action_just_pressed(\"Q4\"):
+		focused_on = $\"43\"
 		return $\"Anchors/43_Q4\"
 	
 	if Input.is_action_just_pressed(\"Hitler\"):
+		focused_on = $Assassination
 		return $\"Anchors/Hitler\"
+	if Input.is_action_just_pressed(\"Stauffenberg\"):
+		focused_on = $von_Stauffenberg
+		return $Anchors/von_Stauffenberg
+	if Input.is_action_just_pressed(\"Assassination\"):
+		focused_on = $Assassination
+		return $Anchors/Assassination
 	if Input.is_action_just_pressed(\"Overview\"):
+		focused_on = null
 		return $\"Anchors/Overview\"
+	
 	
 	return null
 
@@ -56,11 +76,11 @@ func _input(_event: InputEvent) -> void:
 	if ignore_input:
 		return
 	
-	if Input.is_action_just_pressed(\"MOUSE_CLICK\") and start:
+	if Input.is_action_just_pressed(\"MOUSE_CLICK\") and start and play_intro:
 		$AnimationPlayer.play(\"Intro\")
 		start = false
 	
-	if Input.is_action_just_pressed(\"MOUSE_CLICK\"):
+	if Input.is_action_just_pressed(\"MOUSE_CLICK\") && focused_on != null:
 		focused_on.reveal()
 	
 	if not Input.is_anything_pressed():
@@ -189,6 +209,22 @@ viewport_path = NodePath("2D/43")
 [sub_resource type="ViewportTexture" id="ViewportTexture_l5lbc"]
 viewport_path = NodePath("2D/von_Stauffenberg")
 
+[sub_resource type="GDScript" id="GDScript_nc525"]
+script/source = "extends Sprite3D
+
+
+func reveal():
+	
+	if not visible:
+		show()
+		return
+	
+	$Connections.show()
+	var tween: Tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property($\"../Camera\", \"position\", $\"../Anchors/von_Stauffenberg_Connections\".position, 5)
+	tween.tween_property($\"../Camera\", \"rotation\", $\"../Anchors/von_Stauffenberg_Connections\".rotation, 5)
+"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77604"]
 albedo_color = Color(0.529412, 0.137255, 0.254902, 1)
 
@@ -215,6 +251,7 @@ glow_enabled = true
 
 [node name="Valkyrie" type="Node3D"]
 script = SubResource("GDScript_vqg68")
+play_intro = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -270,6 +307,15 @@ metadata/_edit_lock_ = true
 [node name="Overview" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.762871, -0.602753, 0.233916, 0.0429017, 0.408184, 0.911891, -0.645126, -0.68562, 0.337251, 1.29, 6.26953, 5.03421)
 
+[node name="von_Stauffenberg" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.994522, -0.104528, -4.56907e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, -2.29704, 3.4619, 4.64653)
+
+[node name="von_Stauffenberg_Connections" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.809499, -0.587121, -2.12537e-06, 0, -3.61999e-06, 1, -0.587121, -0.809499, -2.93038e-06, -1.01199, 6.23838, 0.976447)
+
+[node name="Assassination" type="Marker3D" parent="Anchors"]
+transform = Transform3D(0.999944, -0.0105757, -3.82841e-08, 0, -3.61999e-06, 1, -0.0105757, -0.999944, -3.61979e-06, 3.48974, 3.44247, 3.97248)
+
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.994522, -0.104528, -3.78389e-07, 0, -3.61999e-06, 1, -0.104528, -0.994522, -3.60016e-06, 1.29, 1.64, 2.98)
 
@@ -306,14 +352,14 @@ script = ExtResource("1_5p76a")
 block_reference = NodePath("../2D/43/Year_Block")
 metadata/_edit_lock_ = true
 
-[node name="von_Stauffenberg" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="von_Stauffenberg" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.39419, 0.0163252, 4.72586)
 visible = false
 texture = SubResource("ViewportTexture_l5lbc")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/von_Stauffenberg/von_Stauffenberg")
+script = SubResource("GDScript_nc525")
 
 [node name="Connections" type="Node3D" parent="von_Stauffenberg"]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="Connection_CZ" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]

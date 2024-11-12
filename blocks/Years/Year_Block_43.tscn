@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csejo6m01imvs"]
+[gd_scene load_steps=14 format=3 uid="uid://csejo6m01imvs"]
 
 [ext_resource type="Theme" uid="uid://c335x474vvmwg" path="res://font/themes/Big_Text.tres" id="1_2x2s2"]
 [ext_resource type="Texture2D" uid="uid://drrcqn6jfehxf" path="res://images/1943/Spark.jpg" id="3_oqnt8"]
@@ -10,6 +10,25 @@
 [ext_resource type="Texture2D" uid="uid://clnc0gef310lf" path="res://images/1943/Tunisia.png" id="8_0ibxh"]
 [ext_resource type="Texture2D" uid="uid://df1pmmr0hxwk4" path="res://images/1943/Valkyrie.jpg" id="9_48qnp"]
 [ext_resource type="Texture2D" uid="uid://dpphtoiv6lstc" path="res://images/1943/Fromm.jpg" id="10_y4os3"]
+
+[sub_resource type="GDScript" id="GDScript_vpoiv"]
+script/source = "extends CanvasLayer
+
+@onready var to_show: Array = [%Spark, %Spark_Result, %von_Manstein, %von_Rundstedt, %von_Kluge, %Hire_Result, %Meet, %Valkyrie, %Fromm, %Fromm_Result, %Description]
+var i: int = 0
+
+
+
+func reveal():
+	
+	if (i == -1):
+		return
+	
+	to_show[i].show()
+	i += 1
+	if (i == to_show.size()):
+		i = -1
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6huq"]
 bg_color = Color(0, 0, 0, 1)
@@ -26,6 +45,7 @@ corner_radius_bottom_left = 100
 bg_color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="Year_Block" type="CanvasLayer"]
+script = SubResource("GDScript_vpoiv")
 
 [node name="Shape" type="Panel" parent="."]
 custom_minimum_size = Vector2(1600, 1280)
@@ -167,6 +187,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_exolb")
 metadata/_edit_lock_ = true
 
 [node name="Spark" type="TextureRect" parent="Shape"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -204,6 +225,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Spark_Result" type="Label" parent="Shape/Spark"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -224,6 +246,7 @@ text = "- result: no sparks"
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Manstein" type="TextureRect" parent="Shape/Spark"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -260,6 +283,7 @@ text = "von Manstein"
 metadata/_edit_use_anchors_ = true
 
 [node name="von_Kluge" type="TextureRect" parent="Shape/Spark"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -295,6 +319,7 @@ theme = ExtResource("4_eww8d")
 text = "von Kluge"
 
 [node name="von_Rundstedt" type="TextureRect" parent="Shape/Spark"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -331,6 +356,7 @@ text = "von Rundstedt"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hire_Result" type="Label" parent="Shape/Spark"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -411,6 +437,7 @@ fingers on the left hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Valkyrie" type="TextureRect" parent="Shape"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -431,6 +458,8 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Description" type="RichTextLabel" parent="Shape/Valkyrie"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(389, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -448,6 +477,7 @@ text = "- Tresckow revises \"Valkyrie\"
 - Supplementary orders written"
 
 [node name="Fromm" type="TextureRect" parent="Shape"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -482,7 +512,27 @@ grow_vertical = 0
 theme = ExtResource("4_eww8d")
 text = "Fromm"
 
+[node name="Commander" type="Label" parent="Shape/Fromm"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.422222
+anchor_top = 0.439888
+anchor_right = 0.217556
+anchor_bottom = 0.557654
+offset_top = 0.0712891
+offset_right = -2.32
+offset_bottom = 7.92456
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0349066
+theme = ExtResource("4_eww8d")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "Commander of the
+Reserve army"
+metadata/_edit_use_anchors_ = true
+
 [node name="Fromm_Result" type="Label" parent="Shape/Fromm"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -500,4 +550,25 @@ rotation = -0.0698132
 theme = ExtResource("4_eww8d")
 theme_override_colors/font_color = Color(1, 0.686275, 0.270588, 1)
 text = "- result: ???"
+metadata/_edit_use_anchors_ = true
+
+[node name="Meet" type="Label" parent="Shape"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14175
+anchor_top = 0.87525
+anchor_right = 0.44575
+anchor_bottom = 0.975688
+offset_left = 0.200012
+offset_top = -0.320068
+offset_right = 0.799988
+offset_bottom = 0.119873
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_scjkn")
+theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
+text = "Stauffenberg meets
+Tresckow"
 metadata/_edit_use_anchors_ = true

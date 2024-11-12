@@ -16,7 +16,7 @@
 [sub_resource type="GDScript" id="GDScript_8tmex"]
 script/source = "extends CanvasLayer
 
-@onready var to_show: Array = [$\"Base/Hitler/42_ass\"]
+@onready var to_show: Array = [%\"42_ass\", %Olbricht, %Shape, %Wolfs_Lair, %Lindermann, %\"von Stulpnagel\", %\"von Hase\", %Goebbels, %And_Others, %Himmler]
 var i: int = 0
 
 
@@ -55,13 +55,38 @@ offset_bottom = 1280.0
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="Panel" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1600, 1280)
 layout_mode = 1
-offset_left = 10.0
-offset_right = 1610.0
+offset_right = 1600.0
 offset_bottom = 1280.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6huq")
+
+[node name="Plan" type="Label" parent="Base/Shape"]
+custom_minimum_size = Vector2(460, 440)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.697875
+anchor_top = 0.567594
+anchor_right = 1.0
+anchor_bottom = 0.973
+offset_left = 9.3999
+offset_top = -5.52008
+offset_right = -14.0
+offset_bottom = 0.560181
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_yb6v3")
+text = "1. Arm the bombs
+2. Get a phone call
+3. RUN!
+4. Broadcast the
+message
+5. Disarm the SS
+6. Take power
+7. We did it!"
+metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Base/Shape"]
 layout_mode = 1
@@ -115,6 +140,7 @@ text = "Adolf Hitler
 "
 
 [node name="42_ass" type="Label" parent="Base/Hitler"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -137,6 +163,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Goebbels" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -212,6 +239,7 @@ text = "NOT ARRESTED"
 metadata/_edit_use_anchors_ = true
 
 [node name="Himmler" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -248,7 +276,6 @@ theme = ExtResource("3_snvit")
 text = "Heinrich Himmler"
 
 [node name="Reverts_Mobilization" type="Label" parent="Base/Himmler"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.205
@@ -270,6 +297,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Wolfs_Lair" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -306,7 +334,6 @@ text = "Wolf's Lair on modern map
 "
 
 [node name="Conference_Date" type="Label" parent="Base/Wolfs_Lair"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.403
@@ -324,33 +351,8 @@ theme = ExtResource("3_snvit")
 theme_override_colors/font_color = Color(0.745098, 0.192157, 0.266667, 1)
 text = "20th of July, 1944"
 
-[node name="Plan" type="Label" parent="Base"]
-visible = false
-custom_minimum_size = Vector2(460, 440)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.697875
-anchor_top = 0.567594
-anchor_right = 0.984625
-anchor_bottom = 0.973094
-offset_left = 9.3999
-offset_top = -5.52008
-offset_right = 10.6
-offset_bottom = 0.439941
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_yb6v3")
-text = "1. Arm the bombs
-2. Get a phone call
-3. RUN!
-4. Broadcast the
-message
-5. Disarm the SS
-6. Take power
-7. We did it!"
-metadata/_edit_use_anchors_ = true
-
 [node name="Olbricht" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -408,6 +410,7 @@ text = "- Put forward the
 metadata/_edit_use_anchors_ = true
 
 [node name="Lindermann" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -462,6 +465,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="von Stulpnagel" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -512,6 +516,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="von Hase" type="TextureRect" parent="Base"]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 1
@@ -548,7 +553,6 @@ text = "von Hase"
 metadata/_edit_use_anchors_ = true
 
 [node name="Description" type="Label" parent="Base/von Hase"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0293143
@@ -569,6 +573,7 @@ strasse"
 metadata/_edit_use_anchors_ = true
 
 [node name="And_Others" type="Label" parent="Base"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -583,7 +588,7 @@ offset_bottom = 0.599976
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_snvit")
-text = "And a ton of other dudes I
+text = "And other officers and men I
 was too lazy to add here. 
 Trust me, it was a massive
 coup, not just these 4 guys."

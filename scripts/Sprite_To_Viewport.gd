@@ -5,4 +5,5 @@ extends Sprite3D
 
 func reveal():
 	
-	block_reference.reveal()
+	if block_reference.has_method("reveal"):
+		block_reference.reveal()

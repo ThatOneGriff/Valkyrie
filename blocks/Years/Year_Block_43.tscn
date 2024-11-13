@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bh3vyogvuu33v" path="res://images/1943/von_Kluge.webp" id="6_5yb10"]
 [ext_resource type="Texture2D" uid="uid://clnc0gef310lf" path="res://images/1943/Tunisia.png" id="8_0ibxh"]
 [ext_resource type="Texture2D" uid="uid://df1pmmr0hxwk4" path="res://images/1943/Valkyrie.jpg" id="9_48qnp"]
-[ext_resource type="FontFile" uid="uid://cqt6e6ppsgrsd" path="res://font/FunnelDisplay-Bold.ttf" id="9_p17ea"]
+[ext_resource type="FontFile" uid="uid://cqt6e6ppsgrsd" path="res://font/Funnel_Display.ttf" id="9_p17ea"]
 [ext_resource type="Texture2D" uid="uid://c2avi8pae5wd5" path="res://images/icons/arrow.png" id="10_e74yk"]
 [ext_resource type="Texture2D" uid="uid://dpphtoiv6lstc" path="res://images/1943/Fromm.jpg" id="10_y4os3"]
 

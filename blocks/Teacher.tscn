@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dniimdxehx08o"]
+
+[ext_resource type="Theme" uid="uid://seocuhcaojpp" path="res://font/themes/Medium_Text.tres" id="1_s8w5w"]
+[ext_resource type="Theme" uid="uid://nl5mevsx06h3" path="res://font/themes/Small_Text.tres" id="1_u107p"]
+
+[node name="Title" type="CanvasLayer"]
+
+[node name="Container" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Teacher" type="Label" parent="Container"]
+layout_mode = 2
+theme = ExtResource("1_u107p")
+text = "teacher"
+
+[node name="Surname" type="Label" parent="Container"]
+layout_mode = 2
+theme = ExtResource("1_s8w5w")
+text = "Seleyderyan"
+
+[node name="Name" type="Label" parent="Container"]
+layout_mode = 2
+theme = ExtResource("1_s8w5w")
+text = "Elina M."
+horizontal_alignment = 2

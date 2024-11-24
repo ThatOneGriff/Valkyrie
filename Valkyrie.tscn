@@ -26,13 +26,13 @@ func get_destination() -> Marker3D:
 	
 	if Input.is_action_just_pressed(\"38\"):
 		focused_on = $\"38-39\"
-		$Title.hide()
 		return $\"Anchors/38\"
 	if Input.is_action_just_pressed(\"39\"):
 		focused_on = null
 		return $\"Anchors/39\"
 	if Input.is_action_just_pressed(\"41\"):
 		focused_on = $\"41\"
+		$Title.hide()
 		return $\"Anchors/41\"
 	if Input.is_action_just_pressed(\"42\"):
 		focused_on = $\"42\"
@@ -108,7 +108,7 @@ func _input(_event: InputEvent) -> void:
 [sub_resource type="Animation" id="Animation_8ym5y"]
 resource_name = "Intro"
 length = 20.0
-step = 20.0
+step = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,7 +152,7 @@ tracks/3/path = NodePath("Camera/Timer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(20),
+"times": PackedFloat32Array(17),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [-1],
@@ -490,7 +490,7 @@ transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 
 texture = SubResource("ViewportTexture_wsdn0")
 
 [node name="Teacher" type="Sprite3D" parent="Title"]
-transform = Transform3D(0.159306, 0.12092, 5.28557e-09, 0, -8.74228e-09, 0.2, 0.12092, -0.159306, -6.96349e-09, 0.609579, 7.86031, 3.38811)
+transform = Transform3D(0.159306, 0.12092, 5.28557e-09, 0, -8.74228e-09, 0.2, 0.12092, -0.159306, -6.96349e-09, 0.609579, 6.57803, 3.38811)
 texture = SubResource("ViewportTexture_lawre")
 
 [node name="Environment" type="Node" parent="."]

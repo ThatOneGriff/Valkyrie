@@ -17,7 +17,7 @@
 [sub_resource type="GDScript" id="GDScript_vpoiv"]
 script/source = "extends CanvasLayer
 
-@onready var to_show: Array = [%Spark, %Spark_Result, %von_Manstein, %von_Rundstedt, %von_Kluge, %Hire_Result, %Meet, %Valkyrie, %Fromm, %Fromm_Result, %Description, %Stauffenberg_Injury]
+@onready var to_show: Array = [%Spark, %Spark_Result, %von_Manstein, %von_Rundstedt, %von_Kluge, %Hire_Result, %Meet, %Valkyrie, %Fromm, %Fromm_Result, %Description, %Stauffenberg_Injury, %Arrested]
 var i: int = 0
 
 
@@ -88,19 +88,18 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="Shape/Layout"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.139
 anchor_top = 0.032
-anchor_right = 0.406
-anchor_bottom = 0.13
+anchor_right = 0.3835
+anchor_bottom = 0.0807813
 offset_left = -0.400024
 offset_top = 0.0399971
 offset_right = 0.399963
 offset_bottom = 0.599991
 theme = ExtResource("3_scjkn")
-text = ": the preparations"
+text = ": the year before"
 metadata/_edit_use_anchors_ = true
 
 [node name="Q1" type="Label" parent="Shape/Layout"]
@@ -583,18 +582,20 @@ visible = false
 custom_minimum_size = Vector2(389, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.501
-anchor_bottom = 1.242
-offset_left = -194.0
-offset_right = 194.488
-offset_bottom = -0.0340271
+anchor_left = 0.52249
+anchor_top = 0.998453
+anchor_right = 0.52249
+anchor_bottom = 1.16845
+offset_left = -214.328
+offset_top = -0.159088
+offset_right = 213.672
+offset_bottom = 0.0706787
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_eww8d")
 text = "- Tresckow revises \"Valkyrie\"
-- Supplementary orders written"
+- Supplementary orders are written"
+metadata/_edit_use_anchors_ = true
 
 [node name="Fromm" type="TextureRect" parent="Shape"]
 unique_name_in_owner = true
@@ -673,6 +674,7 @@ text = "- result: ???"
 metadata/_edit_use_anchors_ = true
 
 [node name="Arrested" type="Label" parent="Shape/Fromm"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1

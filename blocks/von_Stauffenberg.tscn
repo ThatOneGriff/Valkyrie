@@ -9,19 +9,28 @@
 [sub_resource type="GDScript" id="GDScript_ofrl7"]
 script/source = "extends CanvasLayer
 
-
-@onready var to_show: Array = [%Flag, %Despises_Hitler, %Catholic_Cross, %Shot]
+# First 2 are a bit of shitfuckery to reveal the node itself and connections.
+@onready var to_show: Array = [$\".\", null, %Flag, %Despises_Hitler, %Catholic_Cross, %Shot]
+signal reveal_connections()
+signal reveal_self()
 var i: int = 0
 
 
+# Slightly modified 'reveal' function because not all to-reveal parts are children of this node.
 func reveal():
 	
-	if (i == -1):
+	if (i == -1): # Everything revealed.
 		return
-	to_show[i].show()
+	
+	if (to_show[i] == $\".\"):
+		reveal_self.emit()
+	elif (to_show[i] == null):
+		reveal_connections.emit()
+	else:
+		to_show[i].show()
 	i += 1
 	if (i == to_show.size()):
-		i = -1
+		i = -1 # Shows that everything is revealed.
 "
 
 [node name="von_Stauffenberg" type="CanvasLayer"]

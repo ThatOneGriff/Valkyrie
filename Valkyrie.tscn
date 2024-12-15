@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://brm8jqymwapwr"]
+[gd_scene load_steps=33 format=3 uid="uid://brm8jqymwapwr"]
 
 [ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Block_38-39.tscn" id="1_n02dw"]
 [ext_resource type="PackedScene" uid="uid://drm56nw8s7ixe" path="res://blocks/Years/Block_41.tscn" id="2_g58ui"]
@@ -51,6 +51,16 @@ func focus_and_get_destination(input_as_text: String) -> Marker3D:
 
 
 
+func move_camera_to(go_to: Marker3D, time_s = 1) -> void:
+	
+	var tween: Tween = get_tree().create_tween().set_parallel(true)
+	$Camera.idle_rotate = false
+	tween.tween_property($Camera, \"position\", go_to.position, time_s)
+	tween.tween_property($Camera, \"rotation\", go_to.rotation, time_s)
+	$Camera/Timer.start()
+
+
+
 func _input(event: InputEvent) -> void:
 	
 	if ignore_input:
@@ -75,13 +85,7 @@ func _input(event: InputEvent) -> void:
 		return
 	# Credits disappear once camera shifts
 	$Credits.hide()
-	
-	# Moving the camera
-	var tween: Tween = get_tree().create_tween().set_parallel(true)
-	$Camera.idle_rotate = false
-	tween.tween_property($Camera, \"position\", go_to.position, 1)
-	tween.tween_property($Camera, \"rotation\", go_to.rotation, 1)
-	$Camera/Timer.start()
+	move_camera_to(go_to)
 "
 
 [sub_resource type="Animation" id="Animation_8ym5y"]
@@ -228,6 +232,25 @@ viewport_path = NodePath("2D_Viewports/43")
 [sub_resource type="ViewportTexture" id="ViewportTexture_l5lbc"]
 viewport_path = NodePath("2D_Viewports/von_Stauffenberg")
 
+[sub_resource type="GDScript" id="GDScript_d26n4"]
+script/source = "extends Sprite3D
+
+
+func _on_reveal_self() -> void:
+	
+	show()
+"
+
+[sub_resource type="GDScript" id="GDScript_dsvpj"]
+script/source = "extends Node3D
+
+
+func _on_reveal_connections() -> void:
+	
+	show()
+	$\"../..\".move_camera_to(%von_Stauffenberg_Connections, 4)
+"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77604"]
 albedo_color = Color(0.529412, 0.137255, 0.254902, 1)
 
@@ -263,6 +286,7 @@ glow_enabled = true
 
 [node name="Valkyrie" type="Node3D"]
 script = SubResource("GDScript_vqg68")
+play_intro = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -324,6 +348,7 @@ transform = Transform3D(0.994522, -0.104528, -4.56907e-09, 0, -4.37114e-08, 1, -
 metadata/_edit_lock_ = true
 
 [node name="von_Stauffenberg_Connections" type="Marker3D" parent="Anchors"]
+unique_name_in_owner = true
 transform = Transform3D(0.809499, -0.587121, -2.12537e-06, 0, -3.61999e-06, 1, -0.587121, -0.809499, -2.93038e-06, -1.01199, 6.23838, 0.976447)
 metadata/_edit_lock_ = true
 
@@ -377,12 +402,14 @@ metadata/_edit_lock_ = true
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.39419, 0.0163252, 4.72586)
 visible = false
 texture = SubResource("ViewportTexture_l5lbc")
+script = SubResource("GDScript_d26n4")
 
 [node name="Connections" type="Node3D" parent="von_Stauffenberg"]
 visible = false
+script = SubResource("GDScript_dsvpj")
 metadata/_edit_lock_ = true
 
-[node name="Connection_CZ" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+[node name="Connection_CS" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
 transform = Transform3D(2.11643, 1.28028e-08, 0.100159, 2.11643, -3.09086e-08, -0.100159, 3.83197e-08, 0.999999, -4.37809e-09, -5.759, -2.251, -0.0199999)
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
@@ -500,3 +527,5 @@ shadow_enabled = true
 metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="Camera/Timer" to="Camera" method="_on_timer_timeout"]
+[connection signal="reveal_connections" from="2D_Viewports/von_Stauffenberg/von_Stauffenberg" to="von_Stauffenberg/Connections" method="_on_reveal_connections"]
+[connection signal="reveal_self" from="2D_Viewports/von_Stauffenberg/von_Stauffenberg" to="von_Stauffenberg" method="_on_reveal_self"]

@@ -11,7 +11,7 @@ This is my BobbyBroccoli-style 3D presentation for a uni project (and also my fi
 
 **Alternatively**, you may just run the precompiled `.exe` file in the top-level directory.
 
-## Usage
+## How to run
 
 This is supposed to go with a text, but I unfortunately deleted it. Really, it was just my paraphrasing of Wikipedia, so you haven't lost much.
 
@@ -30,3 +30,7 @@ A - assassination [aka June 1944]
 H - Hitler
 S - von Stauffenberg
 3. To reveal data in blocks, press Enter. *1939 and 1941 blocks are supposed to be static.*
+
+## Usage
+
+I don't care. I got my 10 minutes of fame, and now you can use it however you'd like.

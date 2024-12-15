@@ -1,107 +1,86 @@
-[gd_scene load_steps=33 format=3 uid="uid://brm8jqymwapwr"]
+[gd_scene load_steps=31 format=3 uid="uid://brm8jqymwapwr"]
 
-[ext_resource type="Script" path="res://scripts/Sprite_To_Viewport.gd" id="1_5p76a"]
-[ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Year_Block_38-39.tscn" id="1_n02dw"]
-[ext_resource type="PackedScene" uid="uid://drm56nw8s7ixe" path="res://blocks/Years/Year_Block_41.tscn" id="2_g58ui"]
-[ext_resource type="PackedScene" uid="uid://bpqnkcrdibnjm" path="res://blocks/Years/Year_Block_42.tscn" id="3_fj117"]
-[ext_resource type="PackedScene" uid="uid://csejo6m01imvs" path="res://blocks/Years/Year_Block_43.tscn" id="4_gemi1"]
+[ext_resource type="PackedScene" uid="uid://dhqmxh36aa2en" path="res://blocks/Years/Block_38-39.tscn" id="1_n02dw"]
+[ext_resource type="PackedScene" uid="uid://drm56nw8s7ixe" path="res://blocks/Years/Block_41.tscn" id="2_g58ui"]
+[ext_resource type="PackedScene" uid="uid://bpqnkcrdibnjm" path="res://blocks/Years/Block_42.tscn" id="3_fj117"]
+[ext_resource type="PackedScene" uid="uid://csejo6m01imvs" path="res://blocks/Years/Block_43.tscn" id="4_gemi1"]
 [ext_resource type="PackedScene" uid="uid://b5o5j8dpsimrm" path="res://blocks/von_Stauffenberg.tscn" id="5_t47ny"]
-[ext_resource type="PackedScene" uid="uid://c2rt50yi4tl36" path="res://blocks/Years/Year_Block_Assassination.tscn" id="6_t73s7"]
-[ext_resource type="PackedScene" uid="uid://bilxw5qjo4g5h" path="res://blocks/Title.tscn" id="8_du5et"]
-[ext_resource type="PackedScene" uid="uid://bfs2rtwju1tnb" path="res://blocks/Operation_Valkyrie.tscn" id="9_gq7rx"]
+[ext_resource type="PackedScene" uid="uid://c2rt50yi4tl36" path="res://blocks/Years/Assassination.tscn" id="6_t73s7"]
+[ext_resource type="PackedScene" uid="uid://bilxw5qjo4g5h" path="res://blocks/Credits.tscn" id="8_du5et"]
+[ext_resource type="PackedScene" uid="uid://bfs2rtwju1tnb" path="res://blocks/Title.tscn" id="9_gq7rx"]
 [ext_resource type="PackedScene" uid="uid://dniimdxehx08o" path="res://blocks/Teacher.tscn" id="10_fe0p8"]
 
 [sub_resource type="GDScript" id="GDScript_vqg68"]
 script/source = "extends Node3D
 
-@onready var focused_on: Sprite3D = $Assassination
-@onready var Camera: Camera3D = $Camera
-@export var ignore_input: bool = true
 @export var play_intro: bool = true
-var start: bool = true
+@export var ignore_input: bool = false
+
+@onready var focused_on: CanvasLayer = %Assassination
+@onready var focus_anchor_pairs: Dictionary = {
+\"8\": [%Block_38_39, $\"Anchors/38\"],
+\"9\": [null, $\"Anchors/39\"],
+\"1\": [%Block_41, $\"Anchors/41\"],
+\"2\": [%Block_42, $\"Anchors/42\"],
+\"3\": [%Block_43, $\"Anchors/43\"],
+
+\"E\": [%Block_43, $\"Anchors/43_Q1\"],
+\"R\": [%Block_43, $\"Anchors/43_Q2\"],
+\"D\": [%Block_43, $\"Anchors/43_Q3\"],
+\"F\": [%Block_43, $\"Anchors/43_Q4\"],
+
+\"A\": [%Assassination, $Anchors/Assassination],
+\"B\": [%Assassination, $Anchors/Assassination_Baddies],
+\"G\": [%Assassination, $Anchors/Assassination_Goodies],
+\"H\": [%Assassination, $\"Anchors/Hitler\"],
+
+\"S\": [%von_Stauffenberg, $Anchors/von_Stauffenberg],
+\"O\": [null, $\"Anchors/Overview\"]
+}
 
 
 
-func get_destination() -> Marker3D:
+func focus_and_get_destination(input_as_text: String) -> Marker3D:
 	
-	if Input.is_action_just_pressed(\"38\"):
-		focused_on = $\"38-39\"
-		return $\"Anchors/38\"
-	if Input.is_action_just_pressed(\"39\"):
-		focused_on = null
-		return $\"Anchors/39\"
-	if Input.is_action_just_pressed(\"41\"):
-		focused_on = $\"41\"
-		$Title.hide()
-		return $\"Anchors/41\"
-	if Input.is_action_just_pressed(\"42\"):
-		focused_on = $\"42\"
-		return $\"Anchors/42\"
-	if Input.is_action_just_pressed(\"43\"):
-		focused_on = $\"43\"
-		return $\"Anchors/43\"
+	var pair = focus_anchor_pairs.get(input_as_text)
+	if pair == null:
+		return null
 	
-	if Input.is_action_just_pressed(\"Q1\"):
-		focused_on = $\"43\"
-		return $\"Anchors/43_Q1\"
-	if Input.is_action_just_pressed(\"Q2\"):
-		focused_on = $\"43\"
-		return $\"Anchors/43_Q2\"
-	if Input.is_action_just_pressed(\"Q3\"):
-		focused_on = $\"43\"
-		return $\"Anchors/43_Q3\"
-	if Input.is_action_just_pressed(\"Q4\"):
-		focused_on = $\"43\"
-		return $\"Anchors/43_Q4\"
-	if Input.is_action_just_pressed(\"Assassination\"):
-		focused_on = $Assassination
-		return $Anchors/Assassination
-	
-	if Input.is_action_just_pressed(\"Hitler\"):
-		focused_on = $Assassination
-		return $\"Anchors/Hitler\"
-	if Input.is_action_just_pressed(\"Stauffenberg\"):
-		focused_on = $von_Stauffenberg
-		return $Anchors/von_Stauffenberg
-	if Input.is_action_just_pressed(\"Baddies\"):
-		focused_on = $Assassination
-		return $Anchors/Assassination_Baddies
-	if Input.is_action_just_pressed(\"Goodies\"):
-		focused_on = $Assassination
-		return $Anchors/Assassination_Goodies
-	if Input.is_action_just_pressed(\"Overview\"):
-		focused_on = null
-		return $\"Anchors/Overview\"
-	
-	return null
+	focused_on = pair[0]
+	return pair[1]
 
 
 
-func _input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	
 	if ignore_input:
 		return
 	
-	if Input.is_action_just_pressed(\"MOUSE_CLICK\") and start and play_intro:
-		$AnimationPlayer.play(\"Intro\")
-		start = false
-		focused_on.reveal()
+	if Input.is_action_just_pressed(\"REVEAL\"):
+		# One-time intro playback
+		if play_intro:
+			play_intro = false # This was supposed to be in the animation, but for whatever reason I just can't insert any keys.
+			$AnimationPlayer.play(\"Intro\") # No return here so it can cascade into revealing the text.
+		# Element reveal as normal
+		if focused_on != null and focused_on.has_method(\"reveal\"):
+			focused_on.reveal()
+			return # Reveal and camera travel won't happen at the same time.
+	
+	if play_intro: # So that you don't fly away from intro accidentally.
 		return
 	
-	if Input.is_action_just_pressed(\"MOUSE_CLICK\") and focused_on != null and not start:
-		focused_on.reveal()
-	
-	if not Input.is_anything_pressed() or start:
-		return
-	
-	var go_to: Marker3D = get_destination()
+	# Getting camera focus and destination
+	var go_to: Marker3D = focus_and_get_destination(event.as_text())
 	if go_to == null:
 		return
+	# Credits disappear once camera shifts
+	$Credits.hide()
 	
+	# Moving the camera
 	var tween: Tween = get_tree().create_tween().set_parallel(true)
-	Camera.idle_rotate = false
-	tween.tween_property(Camera, \"position\", go_to.position, 1)
-	tween.tween_property(Camera, \"rotation\", go_to.rotation, 1)
+	$Camera.idle_rotate = false
+	tween.tween_property($Camera, \"position\", go_to.position, 1)
+	tween.tween_property($Camera, \"rotation\", go_to.rotation, 1)
 	$Camera/Timer.start()
 "
 
@@ -140,10 +119,10 @@ tracks/2/path = NodePath(".:ignore_input")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 20),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(nan, nan, nan, 0, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true, true, true, false]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -152,9 +131,12 @@ tracks/3/path = NodePath("Camera/Timer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(17),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(nan, 17),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [-1],
+"method": &"start"
+}, {
 "args": [-1],
 "method": &"start"
 }]
@@ -213,16 +195,15 @@ var rotation_direction: int = 1
 
 
 func _on_timer_timeout() -> void:
-	rotation_direction = -rotation_direction
+	
+	rotation_direction = -rotation_direction # Alternation.
 	idle_rotate = true
 
 
 func _process(delta: float) -> void:
 	
-	if not idle_rotate:
-		return
-	
-	rotation.y += 0.01 * delta * rotation_direction
+	if idle_rotate:
+		rotation.y += 0.01 * delta * rotation_direction
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg3y7"]
@@ -233,51 +214,19 @@ material = SubResource("StandardMaterial3D_sg3y7")
 size = Vector2(20, 20)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pwtyl"]
-viewport_path = NodePath("2D/38-39")
+viewport_path = NodePath("2D_Viewports/38-39")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wkdhs"]
-viewport_path = NodePath("2D/41")
+viewport_path = NodePath("2D_Viewports/41")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_yb2id"]
-viewport_path = NodePath("2D/42")
+viewport_path = NodePath("2D_Viewports/42")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w23m6"]
-viewport_path = NodePath("2D/43")
+viewport_path = NodePath("2D_Viewports/43")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l5lbc"]
-viewport_path = NodePath("2D/von_Stauffenberg")
-
-[sub_resource type="GDScript" id="GDScript_nc525"]
-script/source = "extends Sprite3D
-
-@export var block_reference: CanvasLayer
-var connections_revealed: bool = false
-
-
-func reveal():
-	
-	if not visible:
-		show()
-		return
-	
-	if not connections_revealed:
-		reveal_connections()
-		return
-	
-	if block_reference.has_method(\"reveal\"):
-		block_reference.reveal()
-
-
-func reveal_connections():
-	
-	$\"..\".ignore_input = true
-	$Connections.show()
-	var tween: Tween = get_tree().create_tween().set_parallel(true)
-	tween.tween_property($\"../Camera\", \"position\", $\"../Anchors/von_Stauffenberg_Connections\".position, 5)
-	tween.tween_property($\"../Camera\", \"rotation\", $\"../Anchors/von_Stauffenberg_Connections\".rotation, 5)
-	connections_revealed = true
-	$\"..\".ignore_input = false
-"
+viewport_path = NodePath("2D_Viewports/von_Stauffenberg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77604"]
 albedo_color = Color(0.529412, 0.137255, 0.254902, 1)
@@ -286,16 +235,16 @@ albedo_color = Color(0.529412, 0.137255, 0.254902, 1)
 material = SubResource("StandardMaterial3D_77604")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nh6rr"]
-viewport_path = NodePath("2D/Assassination")
+viewport_path = NodePath("2D_Viewports/Assassination")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m6fu8"]
-viewport_path = NodePath("2D/Title")
+viewport_path = NodePath("2D_Viewports/Credits")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wsdn0"]
-viewport_path = NodePath("2D/Operation_Valkyrie")
+viewport_path = NodePath("2D_Viewports/Title")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lawre"]
-viewport_path = NodePath("2D/Teacher")
+viewport_path = NodePath("2D_Viewports/Teacher")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_al7sq"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -314,7 +263,6 @@ glow_enabled = true
 
 [node name="Valkyrie" type="Node3D"]
 script = SubResource("GDScript_vqg68")
-ignore_input = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -329,6 +277,7 @@ metadata/_edit_lock_ = true
 
 [node name="Intro" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.882948, 0.469472, 2.05213e-08, 0, -4.37114e-08, 1, 0.469472, -0.882948, -3.85948e-08, 1.3, 12, 2.8)
+metadata/_edit_lock_ = true
 
 [node name="38" type="Marker3D" parent="Anchors"]
 transform = Transform3D(-0.0815553, -0.996669, -4.35658e-08, 0, -4.37114e-08, 1, -0.996669, 0.0815553, 3.5649e-09, -6.76442, 1.81139, 6.25119)
@@ -368,21 +317,27 @@ metadata/_edit_lock_ = true
 
 [node name="Overview" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.916328, -0.398186, 0.0423219, -3.05713e-09, 0.105691, 0.994399, -0.400429, -0.911195, 0.096848, 1.14952, 8.60455, 3.25349)
+metadata/_edit_lock_ = true
 
 [node name="von_Stauffenberg" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.994522, -0.104528, -4.56907e-09, 0, -4.37114e-08, 1, -0.104528, -0.994522, -4.34719e-08, -2.29704, 3.4619, 4.64653)
+metadata/_edit_lock_ = true
 
 [node name="von_Stauffenberg_Connections" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.809499, -0.587121, -2.12537e-06, 0, -3.61999e-06, 1, -0.587121, -0.809499, -2.93038e-06, -1.01199, 6.23838, 0.976447)
+metadata/_edit_lock_ = true
 
 [node name="Assassination" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.999944, -0.0105757, -3.82841e-08, 0, -3.61999e-06, 1, -0.0105757, -0.999944, -3.61979e-06, 3.48974, 3.44247, 3.97248)
+metadata/_edit_lock_ = true
 
 [node name="Assassination_Baddies" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.999589, 0.0286726, 1.03795e-07, 0, -3.61999e-06, 1, 0.0286726, -0.999589, -3.6185e-06, 3.69347, 2.40981, 3.11901)
+metadata/_edit_lock_ = true
 
 [node name="Assassination_Goodies" type="Marker3D" parent="Anchors"]
 transform = Transform3D(0.999944, -0.0105757, -3.82839e-08, 0, -3.61999e-06, 1, -0.0105757, -0.999944, -3.61979e-06, 3.70199, 2.3848, 5.117)
+metadata/_edit_lock_ = true
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.994522, -0.104528, -3.78389e-07, 0, -3.61999e-06, 1, -0.104528, -0.994522, -3.60016e-06, 1.29, 1.64, 2.98)
@@ -398,40 +353,30 @@ visible = false
 mesh = SubResource("PlaneMesh_4j6xf")
 metadata/_edit_lock_ = true
 
-[node name="38-39" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="38-39" type="Sprite3D" parent="."]
 transform = Transform3D(-1.74846e-08, -0.4, -1.74846e-08, 0, -1.74846e-08, 0.4, -0.4, 1.74846e-08, 7.64274e-16, -6.69478, 0.01, 4.80867)
 texture = SubResource("ViewportTexture_pwtyl")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/38-39/Year_Block_38-39")
 metadata/_edit_lock_ = true
 
-[node name="41" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="41" type="Sprite3D" parent="."]
 transform = Transform3D(0.282843, -0.282843, -1.74846e-08, 1.23634e-08, -1.23634e-08, 0.4, -0.282843, -0.282843, 7.64274e-16, -5.18783, 0.01, -0.385018)
 texture = SubResource("ViewportTexture_wkdhs")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/41/Year_Block_41")
 metadata/_edit_lock_ = true
 
-[node name="42" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="42" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -1.54931, 0.01, -1.89423)
 texture = SubResource("ViewportTexture_yb2id")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/42/Year_Block_42")
 metadata/_edit_lock_ = true
 
-[node name="43" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="43" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, -1.90744)
 texture = SubResource("ViewportTexture_w23m6")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/43/Year_Block")
 metadata/_edit_lock_ = true
 
-[node name="von_Stauffenberg" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="von_Stauffenberg" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.39419, 0.0163252, 4.72586)
 visible = false
 texture = SubResource("ViewportTexture_l5lbc")
-script = SubResource("GDScript_nc525")
-block_reference = NodePath("../2D/von_Stauffenberg/von_Stauffenberg")
 
 [node name="Connections" type="Node3D" parent="von_Stauffenberg"]
 visible = false
@@ -457,41 +402,92 @@ transform = Transform3D(-0.00103435, 0.000108389, 0.141662, 4.3699, 2.77983e-05,
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
 
-[node name="Connection_TN_Def1" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+[node name="Connection_TN_Defeat_1" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
 transform = Transform3D(3.42359, 8.91556e-05, 0.0880365, 2.7157, -6.76792e-05, -0.110985, -0.000121352, 1.00001, -1.53608e-05, 3.59379, 22.0121, -0.0199987)
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
 
-[node name="Connection_TN_Def2" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+[node name="Connection_TN_Defeat_2" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
 transform = Transform3D(4.75974, 0, 6.19155e-09, 2.08055e-07, 7.10543e-15, -0.141646, 2.5411e-21, 0.999998, 4.44089e-16, 11.6879, 24.7056, -0.0199986)
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
 
-[node name="Connection_TN_Def3" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
+[node name="Connection_TN_Defeat_3" type="MeshInstance3D" parent="von_Stauffenberg/Connections"]
 transform = Transform3D(-3.42466, 7.79686e-08, 0.0879928, 2.71435, -2.71515e-08, 0.111019, 3.40711e-07, 1.00001, -3.84628e-09, 19.7913, 22.0223, -0.0199987)
 mesh = SubResource("PlaneMesh_ffmsa")
 skeleton = NodePath("../..")
 
-[node name="Assassination" type="Sprite3D" parent="." node_paths=PackedStringArray("block_reference")]
+[node name="Assassination" type="Sprite3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 3.78407, 0.0163252, 3.9925)
 texture = SubResource("ViewportTexture_nh6rr")
-script = ExtResource("1_5p76a")
-block_reference = NodePath("../2D/Assassination/Year_Block_Assassination")
 metadata/_edit_lock_ = true
 
-[node name="Title" type="Node3D" parent="."]
+[node name="Credits" type="Node3D" parent="."]
 
-[node name="Title" type="Sprite3D" parent="Title"]
+[node name="Title" type="Sprite3D" parent="Credits"]
 transform = Transform3D(0.24975, -0.0111751, -4.88479e-10, 0, -1.09278e-08, 0.25, -0.0111751, -0.24975, -1.09169e-08, 1.75228, 1.05181, 4.73281)
 texture = SubResource("ViewportTexture_m6fu8")
 
-[node name="Operation_Valkyrie" type="Sprite3D" parent="Title"]
+[node name="Operation_Valkyrie" type="Sprite3D" parent="Credits"]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 1.83073, 9.44432, 2.63787)
 texture = SubResource("ViewportTexture_wsdn0")
 
-[node name="Teacher" type="Sprite3D" parent="Title"]
+[node name="Teacher" type="Sprite3D" parent="Credits"]
 transform = Transform3D(0.159306, 0.12092, 5.28557e-09, 0, -8.74228e-09, 0.2, 0.12092, -0.159306, -6.96349e-09, 0.609579, 6.57803, 3.38811)
 texture = SubResource("ViewportTexture_lawre")
+
+[node name="2D_Viewports" type="Node" parent="."]
+
+[node name="38-39" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(1600, 640)
+
+[node name="Block_38_39" parent="2D_Viewports/38-39" instance=ExtResource("1_n02dw")]
+unique_name_in_owner = true
+
+[node name="41" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(800, 640)
+
+[node name="Block_41" parent="2D_Viewports/41" instance=ExtResource("2_g58ui")]
+unique_name_in_owner = true
+
+[node name="42" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(800, 640)
+
+[node name="Block_42" parent="2D_Viewports/42" instance=ExtResource("3_fj117")]
+unique_name_in_owner = true
+
+[node name="43" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(1600, 1280)
+
+[node name="Block_43" parent="2D_Viewports/43" instance=ExtResource("4_gemi1")]
+unique_name_in_owner = true
+
+[node name="von_Stauffenberg" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(800, 1220)
+
+[node name="von_Stauffenberg" parent="2D_Viewports/von_Stauffenberg" instance=ExtResource("5_t47ny")]
+unique_name_in_owner = true
+
+[node name="Assassination" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(1600, 1280)
+
+[node name="Assassination" parent="2D_Viewports/Assassination" instance=ExtResource("6_t73s7")]
+unique_name_in_owner = true
+
+[node name="Credits" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(1050, 350)
+
+[node name="Credits" parent="2D_Viewports/Credits" instance=ExtResource("8_du5et")]
+
+[node name="Title" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(1230, 160)
+
+[node name="Title" parent="2D_Viewports/Title" instance=ExtResource("9_gq7rx")]
+
+[node name="Teacher" type="SubViewport" parent="2D_Viewports"]
+size = Vector2i(300, 170)
+
+[node name="Teacher" parent="2D_Viewports/Teacher" instance=ExtResource("10_fe0p8")]
 
 [node name="Environment" type="Node" parent="."]
 
@@ -502,52 +498,5 @@ environment = SubResource("Environment_qred5")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 17.4239, 0)
 shadow_enabled = true
 metadata/_edit_lock_ = true
-
-[node name="2D" type="Node" parent="."]
-
-[node name="38-39" type="SubViewport" parent="2D"]
-size = Vector2i(1600, 640)
-
-[node name="Year_Block_38-39" parent="2D/38-39" instance=ExtResource("1_n02dw")]
-
-[node name="41" type="SubViewport" parent="2D"]
-size = Vector2i(800, 640)
-
-[node name="Year_Block_41" parent="2D/41" instance=ExtResource("2_g58ui")]
-
-[node name="42" type="SubViewport" parent="2D"]
-size = Vector2i(800, 640)
-
-[node name="Year_Block_42" parent="2D/42" instance=ExtResource("3_fj117")]
-
-[node name="43" type="SubViewport" parent="2D"]
-size = Vector2i(1600, 1280)
-
-[node name="Year_Block" parent="2D/43" instance=ExtResource("4_gemi1")]
-
-[node name="von_Stauffenberg" type="SubViewport" parent="2D"]
-size = Vector2i(800, 1220)
-
-[node name="von_Stauffenberg" parent="2D/von_Stauffenberg" instance=ExtResource("5_t47ny")]
-
-[node name="Assassination" type="SubViewport" parent="2D"]
-size = Vector2i(1600, 1280)
-
-[node name="Year_Block_Assassination" parent="2D/Assassination" instance=ExtResource("6_t73s7")]
-
-[node name="Title" type="SubViewport" parent="2D"]
-size = Vector2i(1050, 350)
-
-[node name="Title" parent="2D/Title" instance=ExtResource("8_du5et")]
-
-[node name="Operation_Valkyrie" type="SubViewport" parent="2D"]
-size = Vector2i(1230, 160)
-
-[node name="Title" parent="2D/Operation_Valkyrie" instance=ExtResource("9_gq7rx")]
-
-[node name="Teacher" type="SubViewport" parent="2D"]
-size = Vector2i(300, 170)
-
-[node name="Title" parent="2D/Teacher" instance=ExtResource("10_fe0p8")]
 
 [connection signal="timeout" from="Camera/Timer" to="Camera" method="_on_timer_timeout"]

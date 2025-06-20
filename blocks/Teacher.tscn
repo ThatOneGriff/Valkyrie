@@ -17,7 +17,7 @@ text = "teacher"
 [node name="Surname" type="Label" parent="Container"]
 layout_mode = 2
 theme = ExtResource("1_s8w5w")
-text = "Seleyderyan"
+text = "Seleydaryan"
 
 [node name="Name" type="Label" parent="Container"]
 layout_mode = 2

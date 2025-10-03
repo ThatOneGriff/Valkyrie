@@ -9,11 +9,11 @@ This is my BobbyBroccoli-style 3D presentation for a uni project (and also my fi
 2. Export!
 `Project -> Export`
 
-**Alternatively**, you may just run the precompiled `.exe` file in the top-level directory.
+**Alternatively**, you may just run the precompiled `.exe` file in the top-level directory. **I am totally aware this is a bad practice.**
 
-## How to run
+## Use guide
 
-This is supposed to go with a text (`Valkyrie.docx`) - however, the program itself is completely not on-rails. Zoom, reveal, and show whatever.
+This is supposed to go with a text (`Valkyrie.docx`) - however, the program gives you a complete freedom. Zoom, reveal, and show whatever you want - it's not on-rails.
 
 1. **Start the intro** by pressing Enter and wait for 20 seconds while it reveals my personal information. *Intro can be disabled* by ticking off `Valkyrie.tscn/Valkyrie [node]/Play Intro`.
 2. From there you're free to go wherever. **Bindings** are as follows:
